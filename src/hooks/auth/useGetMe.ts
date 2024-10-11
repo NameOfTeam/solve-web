@@ -1,7 +1,7 @@
 import { useState } from "react"
 import instance from "../../libs/axios/customAxios";
 import { notification } from "antd";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const useGetMe = () => {
   const [username,setUsername] = useState('');
@@ -16,7 +16,10 @@ const useGetMe = () => {
     try{
       setLoading(true);
 
-      const { data } = useQuery(['user'],fetchMe);
+      const { data } = useQuery({
+        queryKey:['user'],
+        queryFn:fetchMe
+      });
       
       if (data) {
         setUsername(data.data.username);
