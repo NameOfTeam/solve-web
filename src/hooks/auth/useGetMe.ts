@@ -1,41 +1,44 @@
-import { useState } from "react"
+import { useState, useEffect } from "react";
 import instance from "../../libs/axios/customAxios";
 import { notification } from "antd";
 import { useQuery } from "@tanstack/react-query";
+import { getCookie } from "../../libs/react-cookie/cookie";
 
 const useGetMe = () => {
-  const [username,setUsername] = useState('');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [username, setUsername] = useState<string>("");
+  const ACCESS_TOKEN = getCookie('ACCESS_TOKEN');
 
   const fetchMe = async () => {
     const res = await instance.get("/auth/me");
     return res.data;
-  }
+  };
 
-  const getMe = async () => {
-    try{
-      setLoading(true);
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["user"],
+    queryFn: fetchMe,
+    enabled:!!ACCESS_TOKEN
+  });
 
-      const { data } = useQuery({
-        queryKey:['user'],
-        queryFn:fetchMe
+  // 에러 처리
+  useEffect(() => {
+    if (isError) {
+      notification.error({
+        message: "유저 조회 실패",
+        description: "네트워크 에러",
       });
-      
-      if (data) {
-        setUsername(data.data.username);
-      }
-    } catch {
-      notification.error({message:'유저 조회 실패',description:'네트워크 에러'});
-    } finally {
-      setLoading(false);
     }
-  }
-  
-  return{
-    username,
-    getMe,
-    loading
-  }
-}
+  }, [isError]);
 
-export default useGetMe
+  useEffect(() => {
+    if (data) {
+      setUsername(data.data.username);
+    }
+  }, [data]);
+
+  return {
+    username,
+    loading: isLoading,
+  };
+};
+
+export default useGetMe;
