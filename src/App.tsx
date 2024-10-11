@@ -9,7 +9,7 @@ const theme: Theme = {
   },
 };
 
-function App() {
+const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
