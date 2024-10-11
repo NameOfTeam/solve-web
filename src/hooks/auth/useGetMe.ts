@@ -19,7 +19,6 @@ const useGetMe = () => {
     enabled:!!ACCESS_TOKEN
   });
 
-  // 에러 처리
   useEffect(() => {
     if (isError) {
       notification.error({
