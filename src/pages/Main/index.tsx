@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./style";
+import useGetMe from "../../hooks/auth/useGetMe";
 
 const Main = () => {
   const [counter, setCounter] = useState<number>(0);
@@ -7,6 +8,12 @@ const Main = () => {
   const addNumber = () => {
     setCounter((prev) => prev + 1);
   };
+
+  const { ...me } = useGetMe();
+
+  useEffect(()=>{
+    me.getMe();
+  },[]);
 
   return (
     <S.Container>

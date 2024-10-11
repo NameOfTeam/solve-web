@@ -1,19 +1,25 @@
 import { useState } from "react"
 import instance from "../../libs/axios/customAxios";
 import { notification } from "antd";
+import { useQuery } from "react-query";
 
 const useGetMe = () => {
   const [username,setUsername] = useState('');
   const [loading, setLoading] = useState<boolean>(false);
 
+  const fetchMe = async () => {
+    const res = await instance.get("/auth/me");
+    return res.data;
+  }
+
   const getMe = async () => {
     try{
       setLoading(true);
 
-      const res = await instance.get('/auth/me');
+      const { data } = useQuery(['user'],fetchMe);
       
-      if (res) {
-        setUsername(res.data.username);
+      if (data) {
+        setUsername(data.data.username);
       }
     } catch {
       notification.error({message:'유저 조회 실패',description:'네트워크 에러'});
