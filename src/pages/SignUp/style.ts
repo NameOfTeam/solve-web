@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const LoginWrap = styled.div`
   width: 95%;
-  max-width: 35rem;
+  max-width: 32rem;
   height: 45rem;
   border: 0.0625rem solid #ccc;
   display: flex;

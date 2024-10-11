@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as S from "./style";
 import useGetMe from "../../hooks/auth/useGetMe";
 
@@ -9,15 +9,11 @@ const Main = () => {
     setCounter((prev) => prev + 1);
   };
 
-  const { ...me } = useGetMe();
-
-  useEffect(()=>{
-    me.getMe();
-  },[]);
+  const { username, loading } = useGetMe();
 
   return (
     <S.Container>
-      <S.Title>Welcome To cher1shRXD's World!</S.Title>
+      <S.Title>{loading ? '로딩중...' : username}</S.Title>
       <S.Content>
         Edit
         <S.Path>src/components/Main/index.tsx</S.Path>
