@@ -5,10 +5,20 @@ import * as S from "./style";
 const Signup = () => {
   const { ...signup } = useSignUp();
   const [valid, setValid] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [showPasswordCheck, setShowPasswordCheck] = useState<boolean>(false);
 
   const emailRegex =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
   const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+
+  const handleShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
+  const handleShowPasswordCheck = () => {
+    setShowPasswordCheck((prev) => !prev);
+  };
 
   useEffect(() => {
     setValid(
@@ -19,15 +29,11 @@ const Signup = () => {
     );
   }, [signup.data, signup.passwordCheck]);
 
-  useEffect(() => {
-    console.log(valid);
-  }, [valid]);
 
   return (
     <S.Container>
       <S.LoginWrap>
-        <S.Title>SOLVE 회원가입</S.Title>
-        <S.Seperater />
+        <S.Title>Hi, there! 👋</S.Title>
         <S.Label>이메일</S.Label>
         <S.Input
           type="text"
@@ -61,32 +67,45 @@ const Signup = () => {
             "공백 제외 3글자 이상 입력해주세요."}
         </S.Warning>
         <S.Label>비밀번호</S.Label>
-        <S.Input
-          type="password"
-          onChange={signup.handleForm}
-          name="password"
-          placeholder="영문, 숫자, 특수문자 포함 8글자 이상"
-          value={signup.data.password}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") signup.submit();
-          }}
-        />
+        <S.PasswordWrap>
+          <S.PasswordInput
+            type={showPassword ? "text" : "password"}
+            onChange={signup.handleForm}
+            name="password"
+            placeholder="비밀번호를 입력해주세요."
+            value={signup.data.password}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") signup.submit();
+            }}
+          />
+          <S.ShowPassword
+            src={!showPassword ? "/assets/unshowPw.svg" : "/assets/showPw.svg"}
+            onClick={handleShowPassword}
+          />
+        </S.PasswordWrap>
         <S.Warning>
           {!passwordRegex.test(signup.data.password) &&
             signup.data.password.length > 0 &&
             "영문, 숫자, 특수문자 포함 8글자 이상 입력해주세요."}
         </S.Warning>
         <S.Label>비밀번호 확인</S.Label>
-        <S.Input
-          type="password"
-          placeholder="비밀번호 확인"
-          style={{ margin: 0 }}
-          onChange={signup.handlePasswordCheck}
-          value={signup.passwordCheck}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") signup.submit();
-          }}
-        />
+        <S.PasswordWrap>
+          <S.PasswordInput
+            type={showPasswordCheck ? "text" : "password"}
+            onChange={signup.handlePasswordCheck}
+            placeholder="비밀번호를 입력해주세요."
+            value={signup.passwordCheck}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") signup.submit();
+            }}
+          />
+          <S.ShowPassword
+            src={
+              !showPasswordCheck ? "/assets/unshowPw.svg" : "/assets/showPw.svg"
+            }
+            onClick={handleShowPasswordCheck}
+          />
+        </S.PasswordWrap>
         <S.Warning>
           {signup.data.password !== signup.passwordCheck &&
             signup.passwordCheck.length > 0 &&
