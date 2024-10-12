@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
+import { primary } from "../../context/theme";
 
 const FadeIn = keyframes`
   0%{
@@ -132,7 +133,7 @@ export const AutoLoginWrap = styled.div`
 export const Check = styled.input`
   width: 1rem;
   height: 1rem;
-  accent-color: ${({ theme }) => theme.colors.primary};
+  accent-color: ${primary};
   animation: ${FadeIn} 0.7s 0.3s forwards;
   opacity: 0;
 `;
@@ -146,13 +147,14 @@ export const Button = styled.button`
   padding: 1rem;
   color: white;
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${primary};
   border-radius: 1rem;
   transition: all 0.2s;
   animation: ${FadeIn} 0.7s 0.6s forwards;
   opacity: 0;
   &:disabled {
     background-color: #ccc;
+    cursor: not-allowed;
   }
   @media (max-width: 720px) {
     width: 100%;
