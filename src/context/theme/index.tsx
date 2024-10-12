@@ -1,5 +1,6 @@
 import { Theme } from "@emotion/react";
 import { createContext, useContext, useEffect, useState } from "react";
+import { themeStore } from "../../store/themeStore";
 
 interface ThemeContextType {
   theme: Theme;
@@ -36,23 +37,27 @@ const ThemeContext = createContext<ThemeContextType>({
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const isBrowserDarkMode = window.matchMedia(
-    "(prefers-color-scheme: dark)"
-  ).matches;
-  let initTheme = isBrowserDarkMode ? "dark" : "light";
+
+  const storeTheme = themeStore(state=>state.storeTheme);
+  const storedTheme = themeStore(state=>state.storedTheme);
   const [theme, setTheme] = useState<Theme>(
-    initTheme === "dark" ? darkTheme : lightTheme
+    storedTheme === "dark" ? darkTheme : lightTheme
   );
 
   const toggleTheme = () => {
     setTheme((prevTheme) =>
       prevTheme === lightTheme ? darkTheme : lightTheme
     );
+    if(theme === darkTheme) {
+      storeTheme('light');
+    }else{
+      storeTheme('dark');
+    }
   };
 
   useEffect(() => {
-    setTheme(initTheme === "dark" ? darkTheme : lightTheme);
-  }, [initTheme]);
+    setTheme(storedTheme === "dark" ? darkTheme : lightTheme);
+  }, [storedTheme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
