@@ -1,80 +1,161 @@
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import { keyframes } from "@emotion/react";
+
+const FadeIn = keyframes`
+  0%{
+    opacity:0;
+    transform:translateX(5rem);
+  }
+  100%{
+    opacity:1;
+    transform:translateX(0);
+  }
+`;
 
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
+  background: url("/assets/login_bg.gif") no-repeat;
+  background-position: 10rem;
+  background-size: cover;
 `;
 
 export const LoginWrap = styled.div`
-  width: 95%;
-  max-width: 28rem;
-  height: 37rem;
-  border: 0.0625rem solid #ccc;
+  width: 100%;
+  max-width: 45rem;
+  height: 100%;
+  padding: 10rem 0;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 3rem 1rem 1rem 1rem;
   box-sizing: border-box;
+  transition: all 0.2s;
+  background-color: white;
+  border-radius: 0 3rem 3rem 0;
+  @media (max-width: 720px) {
+    padding: 2rem;
+    border-radius: 0;
+  }
 `;
 
 export const Title = styled.p`
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: 500;
-`;
-
-export const Seperater = styled.div`
-  width: 100%;
-  height: 0.0625rem;
-  background-color: #f1f1f1;
-  margin: 0.8rem 0 2.2rem 0;
+  margin-bottom: 5rem;
+  width: 75%;
+  transition: all 0.2s;
+  animation: ${FadeIn} 0.7s forwards;
+  opacity: 0;
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 `;
 
 export const Label = styled.p`
-  align-self: flex-start;
-  font-size: 1.7rem;
+  width: 75%;
+  font-size: 1.5rem;
   margin-bottom: 0.5rem;
+  transition: all 0.2s;
+  animation: ${FadeIn} 0.7s 0.3s forwards;
+  opacity: 0;
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 `;
 
 export const Input = styled.input`
-  width: 100%;
-  font-size: 1.4rem;
-  padding: 0.5rem;
+  width: 75%;
+  font-size: 1.2rem;
+  padding: 1.2rem;
   border: 0.0625rem solid #ccc;
   outline: none;
   box-sizing: border-box;
   margin-bottom: 2rem;
+  border-radius: 1rem;
+  transition: all 0.2s;
+  animation: ${FadeIn} 0.7s 0.3s forwards;
+  opacity: 0;
+  @media (max-width: 720px) {
+    width: 100%;
+  }
+`;
+
+export const PasswordInput = styled.input`
+  font-size: 1.2rem;
+  padding: 1.2rem;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+  transition: all 0.2s;
+  flex: 1;
+`;
+
+export const PasswordWrap = styled.div`
+  width: 75%;
+  transition: all 0.2s;
+  border: 0.0625rem solid #ccc;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  animation: ${FadeIn} 0.7s 0.3s forwards;
+  opacity: 0;
+  @media (max-width: 720px) {
+    width: 100%;
+  }
+`;
+
+export const ShowPassword = styled.img`
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+  object-position: center;
+  cursor: pointer;
+  margin-right: 1rem;
 `;
 
 export const AutoLoginWrap = styled.div`
-  width: 100%;
+  width: 75%;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 0;
+  transition: all 0.2s;
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 `;
 
 export const Check = styled.input`
   width: 1rem;
   height: 1rem;
   accent-color: ${({ theme }) => theme.colors.primary};
+  animation: ${FadeIn} 0.7s 0.3s forwards;
+  opacity: 0;
 `;
 
 export const Button = styled.button`
-  width: 100%;
-  font-size: 1.7rem;
+  width: 75%;
+  font-size: 1.5rem;
   border: none;
   outline: none;
   cursor: pointer;
-  padding: 0.7rem;
+  padding: 1rem;
   color: white;
   text-align: center;
   background-color: ${({ theme }) => theme.colors.primary};
+  border-radius: 1rem;
+  transition: all 0.2s;
+  animation: ${FadeIn} 0.7s 0.6s forwards;
+  opacity: 0;
   &:disabled {
     background-color: #ccc;
+  }
+  @media (max-width: 720px) {
+    width: 100%;
   }
 `;
 
@@ -84,17 +165,23 @@ export const Filler = styled.div`
 `;
 
 export const NavWrap = styled.div`
-  width: 100%;
+  width: 75%;
   padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
+  transition: all 0.2s;
+  animation: ${FadeIn} 0.7s 0.7s forwards;
+  opacity: 0;
+  @media (max-width: 720px) {
+    width: 100%;
+  }
 `;
 
 export const Nav = styled(Link)`
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #ccc;
   text-decoration: none;
   &:hover {
