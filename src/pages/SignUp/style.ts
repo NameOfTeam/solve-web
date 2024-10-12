@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
+import { primary } from "../../context/theme";
 
 const FadeIn = keyframes`
   0%{
@@ -44,7 +45,7 @@ export const LoginWrap = styled.div`
 export const Title = styled.p`
   font-size: 2.5rem;
   font-weight: 500;
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
   width: 75%;
   transition: all 0.2s;
   animation: ${FadeIn} 0.7s forwards;
@@ -118,7 +119,7 @@ export const ShowPassword = styled.img`
 
 export const Warning = styled.p`
   width: 75%;
-  padding-left:1rem;
+  padding-left: 1rem;
   height: 1.5rem;
   font-size: 0.7rem;
   color: red;
@@ -141,13 +142,14 @@ export const Button = styled.button`
   padding: 1rem;
   color: white;
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${primary};
   border-radius: 1rem;
   transition: all 0.2s;
   animation: ${FadeIn} 0.7s 0.6s forwards;
   opacity: 0;
   &:disabled {
     background-color: #ccc;
+    cursor: not-allowed;
   }
   @media (max-width: 720px) {
     width: 100%;
