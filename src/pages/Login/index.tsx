@@ -25,7 +25,7 @@ const Login = () => {
   return (
     <S.Container>
       <S.LoginWrap>
-        <S.Title>Welcome back!</S.Title>
+        <S.Title>Welcome back! 🎉</S.Title>
         <S.Label>이메일</S.Label>
         <S.Input
           type="text"
