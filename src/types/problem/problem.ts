@@ -11,7 +11,26 @@ export interface Problem {
 }
 
 export interface ProblemTestCase {
-  id: number;
   input: string;
-  output: string;
+  expectedOutput: string;
+}
+
+export interface SubmitCode {
+  code: string;
+  testCases: ProblemTestCase[];
+  language: string;
+  timeLimit: number;
+  memLimit: number;
+}
+
+export interface SubmitResults {
+  input: string;
+  expectedOutput: string;
+  actualOutput: string;
+  passed: boolean;
+}
+
+export interface SubmitResponse {
+  status: string;
+  results: SubmitResults[];
 }

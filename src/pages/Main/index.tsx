@@ -7,7 +7,7 @@ import { useTheme } from "../../context/theme";
 const Main = () => {
   const [counter, setCounter] = useState<number>(0);
 
-  const { toggleTheme } = useTheme();
+  const { toggleTheme, setPurpleTheme } = useTheme();
 
   const addNumber = () => {
     setCounter((prev) => prev + 1);
@@ -28,6 +28,7 @@ const Main = () => {
       <S.Couter>{counter}</S.Couter>
       <S.Button onClick={addNumber}>Click me!</S.Button>
       <S.Button onClick={toggleTheme}>Change Theme!</S.Button>
+      <S.Button onClick={setPurpleTheme}>Change Purple!</S.Button>
     </ThemedContainer>
   );
 };

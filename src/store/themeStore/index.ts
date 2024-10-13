@@ -2,17 +2,17 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 interface ThemeStore {
-  storedTheme: "light" | "dark";
-  storeTheme: (storeTheme: "light" | "dark") => void;
+  theme: "light" | "dark" | "purple";
+  setTheme: (storeTheme: "light" | "dark" | "purple") => void;
 }
 
 export const themeStore = create(
   persist<ThemeStore>(
     (set) => ({
-      storedTheme: window.matchMedia("(prefers-color-scheme: dark)").matches
+      theme: window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light",
-      storeTheme: (storedTheme: "light" | "dark") => set({ storedTheme }),
+      setTheme: (theme: "light" | "dark" | "purple") => set({ theme }),
     }),
     {
       name: "THEME",

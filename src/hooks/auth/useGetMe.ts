@@ -9,7 +9,7 @@ const useGetMe = () => {
   const ACCESS_TOKEN = getCookie('ACCESS_TOKEN');
 
   const fetchMe = async () => {
-    const res = await instance.get("/auth/me");
+    const res = await instance.get("/users/me");
     return res.data;
   };
 

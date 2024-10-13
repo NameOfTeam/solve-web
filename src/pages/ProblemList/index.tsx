@@ -1,12 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import useGetProblems from "../../hooks/problem/useGetProblems";
 
 const ProblemList = () => {
   const { data, ref } = useGetProblems();
+  const navigate = useNavigate();
 
   return (
-    <div>
+    <div style={{overflow:'scroll'}}>
       <h1>문제</h1>
-
       {data ? (
         data.pages.map((page) => (
           <div key={page.pageable.pageNumber}>
@@ -18,6 +19,7 @@ const ProblemList = () => {
                   padding: "1rem 10rem",
                 }}
                 key={problem.id}
+                onClick={()=>{navigate(`/problems/${problem.id}`)}}
               >
                 {problem.id} | {problem.title} | {problem.timeLimit} |{" "}
                 {problem.memoryLimit} | {problem.correctRate}
