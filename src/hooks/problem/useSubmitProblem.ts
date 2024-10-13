@@ -1,13 +1,13 @@
 import { useMutation } from "@tanstack/react-query";
-
-import { SubmitResponse } from "../../types/problem/problem";
+import { ProblemSubmitResponse } from "../../types/problem/problem";
 import { useState } from "react";
 import { notification } from "antd";
 import instance from "../../libs/axios/customAxios";
+import { BaseResponse } from "../../types/common/base";
 
 
 const useSubmitProblem = (problemId:string) => {
-  const [result, setResult] = useState<SubmitResponse>();
+  const [result, setResult] = useState<BaseResponse<ProblemSubmitResponse>>();
   const [code, setCode] = useState<string>('');
 
   const handleCode = (e: any) => {
@@ -15,7 +15,7 @@ const useSubmitProblem = (problemId:string) => {
   };
 
   const gradingRequest = async () => {
-    const res = await instance.post(`/problems/${problemId}/submit`, {
+    const res = await instance.post<BaseResponse<ProblemSubmitResponse>>(`/problems/${problemId}/submit`, {
       code,
       visibility: 'PUBLIC',
       language: 'PYTHON'
@@ -27,10 +27,6 @@ const useSubmitProblem = (problemId:string) => {
     mutationFn: gradingRequest,
     onSuccess: (data) => {
       setResult(data);
-      notification.success({
-        message: "제출 성공",
-        description: "코드가 성공적으로 제출되었습니다.",
-      });
     },
     onError: () => {
       notification.error({
@@ -45,7 +41,7 @@ const useSubmitProblem = (problemId:string) => {
     submitCode,
     handleCode,
     code,
-    isPending
+    isPending,
   };
 };
 

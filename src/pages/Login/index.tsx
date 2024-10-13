@@ -9,7 +9,7 @@ const Login = () => {
 
   useEffect(() => {
     if (
-      login.data.email.trim().length > 0 &&
+      login.data.username.trim().length > 0 &&
       login.data.password.trim().length > 0
     ) {
       setVaild(true);
@@ -26,13 +26,13 @@ const Login = () => {
     <S.Container>
       <S.LoginWrap>
         <S.Title>Welcome back! 🎉</S.Title>
-        <S.Label>이메일</S.Label>
+        <S.Label>아이디</S.Label>
         <S.Input
           type="text"
           onChange={login.handleForm}
-          name="email"
-          placeholder="이메일을 입력해주세요."
-          value={login.data.email}
+          name="username"
+          placeholder="아이디를 입력해주세요."
+          value={login.data.username}
           onKeyDown={(e) => {
             if (e.key === "Enter") login.submit();
           }}

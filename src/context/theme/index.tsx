@@ -1,6 +1,6 @@
 import { Theme } from "@emotion/react";
 import { createContext, useContext, useEffect, useState } from "react";
-import { themeStore } from "../../store/themeStore";
+import { useThemeStore } from "../../store/useThemeStore";
 
 interface ThemeContextType {
   theme: Theme;
@@ -47,8 +47,8 @@ const ThemeContext = createContext<ThemeContextType>({
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-  const storeTheme = themeStore((state) => state.setTheme);
-  const storedTheme = themeStore((state) => state.theme);
+  const storeTheme = useThemeStore((state) => state.setTheme);
+  const storedTheme = useThemeStore((state) => state.theme);
   const [theme, setTheme] = useState<Theme>(
     storedTheme === "dark" ? darkTheme : storedTheme === "purple" ? purpleTheme : lightTheme
   );

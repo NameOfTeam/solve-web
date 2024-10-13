@@ -1,36 +1,44 @@
-import * as Stomp from '@stomp/stompjs'
-import { useEffect, useRef, useState } from 'react';
+import * as Stomp from "@stomp/stompjs";
+import { useEffect, useRef, useState } from "react";
+import {
+  ProblemSubmitProgressResponse,
+  ProblemSubmitState,
+} from "../../types/problem/problem";
 
 const useGetSubmitProgress = () => {
   const ref = useRef<Stomp.Client | null>(null);
   const [progress, setProgress] = useState<number>(0);
+  const [state, setState] = useState<ProblemSubmitState>("PENDING");
 
-  ref.current = new Stomp.Client({
-    brokerURL: import.meta.env.VITE_WS_URL,
-    debug: function (str) {
-      console.log(str);
-    },
-    onConnect: () => {
-      console.log('커넥티드');
-      ref.current!.subscribe("/sub/progress",message => {
-        const body = JSON.parse(message.body);
-        console.log(body);
-        setProgress(body.progress);
-      });
-    }
-  });
+  const subscribeProgress = (id: number) => {
+    ref.current = new Stomp.Client({
+      brokerURL: import.meta.env.VITE_WS_URL,
+      onConnect: () => {
+        ref.current!.subscribe(`/sub/progress/${id}`, (message) => {
+          const body = JSON.parse(
+            message.body
+          ) as ProblemSubmitProgressResponse;
 
-  useEffect(()=>{
+          setProgress(Math.floor(body.progress));
+          setState(body.result);
+        });
+      },
+    });
+
     ref.current?.activate();
+  };
 
+  useEffect(() => {
     return () => {
       ref.current?.deactivate();
-    }
-  },[]);
+    };
+  }, []);
 
   return {
-    progress
-  }
-}
+    subscribeProgress,
+    progress,
+    state,
+  };
+};
 
-export default useGetSubmitProgress
+export default useGetSubmitProgress;

@@ -6,7 +6,7 @@ interface ThemeStore {
   setTheme: (storeTheme: "light" | "dark" | "purple") => void;
 }
 
-export const themeStore = create(
+export const useThemeStore = create(
   persist<ThemeStore>(
     (set) => ({
       theme: window.matchMedia("(prefers-color-scheme: dark)").matches

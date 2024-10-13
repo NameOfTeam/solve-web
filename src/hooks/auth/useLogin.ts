@@ -7,7 +7,7 @@ import { setCookie } from "../../libs/react-cookie/cookie";
 
 const useLogin = () => {
   const [data, setData] = useState<LoginData>({
-    email: "",
+    username: "",
     password: "",
   });
   const [loading, setLoading] = useState<boolean>(false);
@@ -21,8 +21,8 @@ const useLogin = () => {
   };
 
   const handleAutoLogin = () => {
-    setAutoLogin(prev => !prev);
-  }
+    setAutoLogin((prev) => !prev);
+  };
 
   const submit = async () => {
     try {
@@ -55,7 +55,10 @@ const useLogin = () => {
         navigate("/");
       }
     } catch (err: any) {
-      if (err.response && (err.response.data.status === 401 || err.response.data.status === 404)) {
+      if (
+        err.response &&
+        (err.response.data.status === 401 || err.response.data.status === 404)
+      ) {
         notification.error({
           message: "로그인 실패",
           description: "아이디 또는 비밀번호를 확인해주세요.",
@@ -63,7 +66,7 @@ const useLogin = () => {
 
         return;
       }
-      
+
       notification.error({
         message: "로그인 실패",
         description: "네트워크 에러",

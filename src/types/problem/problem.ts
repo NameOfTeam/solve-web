@@ -1,6 +1,6 @@
 export interface Problem {
-  id: number,
-  title: string,
+  id: number;
+  title: string;
   content: string;
   input: string;
   output: string;
@@ -8,11 +8,18 @@ export interface Problem {
   timeLimit: number;
   correctRate: number;
   testCases: ProblemTestCase[];
+  author: ProblemAuthorResponse;
+  state?: ProblemSubmitState;
+}
+
+interface ProblemAuthorResponse {
+  username: string;
 }
 
 export interface ProblemTestCase {
+  id: number;
   input: string;
-  expectedOutput: string;
+  output: string;
 }
 
 export interface SubmitCode {
@@ -20,17 +27,27 @@ export interface SubmitCode {
   testCases: ProblemTestCase[];
   language: string;
   timeLimit: number;
-  memLimit: number;
+  memoryLimit: number;
 }
 
-export interface SubmitResults {
-  input: string;
-  expectedOutput: string;
-  actualOutput: string;
-  passed: boolean;
+export interface ProblemSubmitResponse {
+  id: number;
+  result: string;
 }
 
-export interface SubmitResponse {
-  status: string;
-  results: SubmitResults[];
+export interface ProblemSubmitProgressResponse {
+  submitId: number;
+  progress: number;
+  result: ProblemSubmitState;
 }
+
+export type ProblemSubmitState =
+  | "ACCEPTED"
+  | "WRONG_ANSWER"
+  | "PRESENTATION_ERROR"
+  | "TIME_LIMIT_EXCEEDED"
+  | "MEMORY_LIMIT_EXCEEDED"
+  | "RUNTIME_ERROR"
+  | "PENDING"
+  | "JUDGING"
+  | "JUDGING_IN_PROGRESS";

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import ThemedText from "../../components/common/ThemedText";
-
+import ThemedBox from "../../components/common/ThemedBox";
+import ThemedContainer from "../../components/common/ThemedContainer";
 
 export const Header = styled.div`
   width: 100%;
@@ -29,29 +30,33 @@ export const Main = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   gap: 1rem;
-  padding: 0 1rem;
+  padding: 0 2rem;
   box-sizing: border-box;
-  overflow-y:scroll;
+  overflow-y: scroll;
 `;
 
 export const ProblemWrap = styled.div`
   flex: 1;
-  min-width:20rem;
+  min-width: 20rem;
   height: 100%;
-  background-color: #f1f1f1;
   padding: 1rem;
   box-sizing: border-box;
   font-size: 1rem;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 `;
 
 export const EditorWrap = styled.div`
-  flex:1;
-  min-width:20rem;
-  height:100%;
-`
+  flex: 1;
+  min-width: 20rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const SubmitWrap = styled.div`
   width: 100%;
@@ -63,6 +68,106 @@ export const SubmitWrap = styled.div`
   box-sizing: border-box;
   gap: 1rem;
 `;
+
+export const TestCaseWrap = styled.div`
+  width: 100%;
+  padding: 1rem 0rem;
+  box-sizing: border-box;
+  display: flex;
+  gap: 0.5rem;
+`;
+
+export const Section = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+`;
+
+export const SectionTitle = styled(ThemedText)`
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
+export const SectionContent = styled(ThemedText)`
+  font-size: 1.2rem;
+`;
+
+export const TestCaseType = styled(ThemedText)`
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-left: 0.25rem;
+`;
+
+export const TestCase = styled.div`
+  flex: 1;
+  padding: 0.5rem;
+  box-sizing: border-box;
+`;
+
+export const TestCaseBox = styled(ThemedBox)`
+  width: 100%;
+  height:3rem;
+  box-sizing: border-box;
+  margin-top: 0.7rem;
+  border-radius: 0.5rem;
+  display:flex;
+  align-items:center;
+  padding:0 1rem;
+`;
+
+export const ResultWrap = styled(ThemedContainer)`
+  width:100%;
+  flex:1;
+`;
+
+export const ProgressWrap = styled.div`
+  width: 100%;
+  padding: 1rem 0;
+  box-sizing: border-box;
+`;
+
+export const ProgressBarWrap = styled(ThemedBox)`
+  width:100%;
+  height:2rem;
+  border-radius: 0.5rem;
+`
+
+export const Progress = styled.div<{ progress: number, background: string }>`
+  width: ${(props) => props.progress}%;
+  padding: 0 0.5rem;
+  height:2rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+  background-color:${props=>props.background};
+  overflow:hidden;
+  transition:all 0.2s;
+`;
+export const ProgressText = styled.p`
+  color:white;
+  font-size: 1rem;
+`;
+
+export const TestResultWrap = styled.div`
+  background-color:black;
+  width:100%;
+  flex:1;
+  box-sizing:border-box;
+`
+export const TestResultText = styled.textarea`
+  color:white;
+  width:100%;
+  height:100%;
+  box-sizing:border-box;
+  resize:none;
+  background-color:black;
+  outline:none;
+  border:none;
+  padding:0.5rem;
+`
 
 export const Button = styled.button<{
   color: string;

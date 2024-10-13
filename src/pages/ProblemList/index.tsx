@@ -6,7 +6,7 @@ const ProblemList = () => {
   const navigate = useNavigate();
 
   return (
-    <div style={{overflow:'scroll'}}>
+    <div style={{ overflow: "scroll" }}>
       <h1>문제</h1>
       {data ? (
         data.pages.map((page) => (
@@ -19,10 +19,12 @@ const ProblemList = () => {
                   padding: "1rem 10rem",
                 }}
                 key={problem.id}
-                onClick={()=>{navigate(`/problems/${problem.id}`)}}
+                onClick={() => {
+                  navigate(`/problems/${problem.id}`);
+                }}
               >
                 {problem.id} | {problem.title} | {problem.timeLimit} |{" "}
-                {problem.memoryLimit} | {problem.correctRate}
+                {problem.memoryLimit} | {problem.correctRate} | {problem.state}
               </div>
             ))}
           </div>
