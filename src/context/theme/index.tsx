@@ -13,6 +13,7 @@ interface ThemeProviderProps {
 }
 
 export const primary = "#9a55f3";
+export const secondary = "#1EC34C";
 
 const lightTheme: Theme = {
   backgroundColor: "#FFF",

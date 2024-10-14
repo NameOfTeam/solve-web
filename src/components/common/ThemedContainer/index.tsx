@@ -5,8 +5,8 @@ import { ThemedComponent } from "../../../types/theme/theme";
 const Container = styled.div`
   width: 100%;
   flex: 1;
-  display: flex;
-  flex-direction: column;
+  border-style: solid;
+  border-width: 0;
 `;
 
 const ThemedContainer = ({ className, children }: ThemedComponent) => {
@@ -15,7 +15,7 @@ const ThemedContainer = ({ className, children }: ThemedComponent) => {
   return (
     <Container
       className={className}
-      style={{ backgroundColor: theme.backgroundColor }}
+      style={{ backgroundColor: theme.backgroundColor,borderColor:theme.borderColor }}
     >
       {children}
     </Container>
