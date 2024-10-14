@@ -1,17 +1,21 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
-import { useEffect } from 'react';
-import { useInView } from 'react-intersection-observer';
-import { BaseResponse } from '../../types/common/base';
-import { PageResponse } from '../../types/common/page';
-import { Problem } from '../../types/problem/problem';
-import axios from 'axios';
+import { useInfiniteQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { BaseResponse } from "../../types/common/base";
+import { PageResponse } from "../../types/common/page";
+import { Problem } from "../../types/problem/problem";
+import instance from "../../libs/axios/customAxios";
 
 const useGetProblems = () => {
-  const getProblems = async ({ pageParam }: { pageParam: number }) => {
-    const { data } = await axios.get<BaseResponse<PageResponse<Problem>>>(
-      `${import.meta.env.VITE_API_URL}/problems?page=${pageParam}&size=10`
-    );
+  const [initialRequest, setInitialRequest] = useState<boolean>(true);
 
+  const getProblems = async ({ pageParam }: { pageParam: number }) => {
+    const { data } = await instance.get<BaseResponse<PageResponse<Problem>>>(
+      `/problems?page=${pageParam}&size=${
+        initialRequest ? "20" : "10"
+      }`
+    );
+    setInitialRequest(false);
     return data.data;
   };
 
@@ -20,10 +24,6 @@ const useGetProblems = () => {
     queryKey: ["problems"],
     queryFn: getProblems,
     initialPageParam: 0,
-    // getPreviousPageParam: (firstPage) =>
-    //   firstPage.pageable.pageNumber > 0
-    //     ? firstPage.pageable.pageNumber - 1
-    //     : undefined,
     getNextPageParam: (lastPage) =>
       lastPage.pageable.pageNumber < lastPage.totalPages - 1
         ? lastPage.pageable.pageNumber + 1
@@ -37,6 +37,6 @@ const useGetProblems = () => {
   }, [inView, fetchNextPage]);
 
   return { data, ref };
-}
+};
 
-export default useGetProblems
+export default useGetProblems;

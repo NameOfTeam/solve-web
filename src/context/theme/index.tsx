@@ -1,17 +1,18 @@
 import { Theme } from "@emotion/react";
 import { createContext, useContext, useEffect, useState } from "react";
-import { themeStore } from "../../store/themeStore";
+import { useThemeStore } from "../../store/useThemeStore";
 
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
-};
+  setPurpleTheme: () => void;
+}
 
 interface ThemeProviderProps {
   children: React.ReactNode;
 }
 
-export const primary = '#9a55f3';
+export const primary = "#9a55f3";
 
 const lightTheme: Theme = {
   backgroundColor: "#FFF",
@@ -21,9 +22,17 @@ const lightTheme: Theme = {
   boxBorderColor: "#CCC",
 };
 
+const purpleTheme: Theme = {
+  backgroundColor: "#423F4A",
+  oppositeColor: "#F5F5F5",
+  boxColor: "#5A5766",
+  borderColor: "#4E4B58",
+  boxBorderColor: "#726E81",
+};
+
 const darkTheme: Theme = {
   backgroundColor: "#2b2b2b",
-  oppositeColor: "#f5f5f5",
+  oppositeColor: "#F5F5F5",
   boxColor: "#373737",
   borderColor: "#323232",
   boxBorderColor: "#404040",
@@ -32,35 +41,46 @@ const darkTheme: Theme = {
 const ThemeContext = createContext<ThemeContextType>({
   theme: lightTheme,
   toggleTheme: () => {},
+  setPurpleTheme: () => {}
 });
 
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
-
-  const storeTheme = themeStore(state=>state.storeTheme);
-  const storedTheme = themeStore(state=>state.storedTheme);
+  const storeTheme = useThemeStore((state) => state.setTheme);
+  const storedTheme = useThemeStore((state) => state.theme);
   const [theme, setTheme] = useState<Theme>(
-    storedTheme === "dark" ? darkTheme : lightTheme
+    storedTheme === "dark" ? darkTheme : storedTheme === "purple" ? purpleTheme : lightTheme
   );
 
   const toggleTheme = () => {
     setTheme((prevTheme) =>
       prevTheme === lightTheme ? darkTheme : lightTheme
     );
-    if(theme === darkTheme) {
-      storeTheme('light');
-    }else{
-      storeTheme('dark');
+    if (theme === darkTheme) {
+      storeTheme("light");
+    } else {
+      storeTheme("dark");
     }
   };
 
+  const setPurpleTheme = () => {
+    setTheme(purpleTheme);
+    storeTheme('purple');
+  }
+
   useEffect(() => {
-    setTheme(storedTheme === "dark" ? darkTheme : lightTheme);
+    setTheme(
+      storedTheme === "dark"
+        ? darkTheme
+        : storedTheme === "purple"
+        ? purpleTheme
+        : lightTheme
+    );
   }, [storedTheme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, setPurpleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
