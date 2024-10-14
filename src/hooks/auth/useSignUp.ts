@@ -31,9 +31,9 @@ const useSignUp = () => {
       const res = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, data);
 
       if (res) {
-        notification.success({
+        notification.info({
           message: "성공",
-          description: "서비스 이용을 위해 로그인 해주세요.",
+          description: "회원가입 완료를 위해 이메일 인증을 진행해주세요.",
         });
 
         navigate("/login");
@@ -45,6 +45,13 @@ const useSignUp = () => {
         notification.error({
           message: "회원가입 실패",
           description: "이미 사용 중인 이메일입니다.",
+        });
+        return;
+      }
+      if (err.response && err.response.data.code === "USERNAME_DUPLICATED") {
+        notification.error({
+          message: "회원가입 실패",
+          description: "이미 사용 중인 아이디입니다.",
         });
         return;
       }

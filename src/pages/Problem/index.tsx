@@ -3,11 +3,12 @@ import * as S from "./style";
 import Editor, { useMonaco } from "@monaco-editor/react";
 import ThemedContainer from "../../components/common/ThemedContainer";
 import useGetProblem from "../../hooks/problem/useGetProblem";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useSubmitProblem from "../../hooks/problem/useSubmitProblem";
 import useGetSubmitProgress from "../../hooks/problem/useGetSubmitProgress";
 import { notification } from "antd";
 import { primary, useTheme } from "../../context/theme";
+import ThemedLink from "../../components/common/ThemedLink";
 
 const Problem = () => {
   const { problemId } = useParams();
@@ -116,9 +117,9 @@ const Problem = () => {
                 <S.TestCaseBox>
                   <S.SectionContent>
                     문제를 만든 사람:{" "}
-                    <Link to={`/users/${data?.author.username}`}>
+                    <ThemedLink to={`/users/${data?.author.username}`}>
                       {data?.author.username}
-                    </Link>
+                    </ThemedLink>
                   </S.SectionContent>
                 </S.TestCaseBox>
               </S.Section>

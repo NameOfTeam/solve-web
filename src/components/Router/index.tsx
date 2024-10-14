@@ -6,6 +6,7 @@ import Login from "../../pages/Login";
 import Signup from "../../pages/SignUp";
 import ProblemList from "../../pages/ProblemList";
 import Problem from "../../pages/Problem";
+import Verify from "../../pages/Verify";
 
 const Router = () => {
   return (
@@ -15,9 +16,10 @@ const Router = () => {
           <Route index element={<Main />} />
           <Route path="problems" element={<ProblemList />} />
         </Route>
-        <Route path="problems/:problemId" element={<Problem />} />
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
+        <Route path="/verify" element={<Verify />}/>
+        <Route path="/problems/:problemId" element={<Problem />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -66,6 +66,17 @@ const useLogin = () => {
 
         return;
       }
+      if (
+        err.response &&
+        (err.response.data.code === "USER_NOT_VERIFIED")
+      ) {
+        notification.error({
+          message: "로그인 실패",
+          description: "인증되지 않은 회원입니다.",
+        });
+
+        return;
+      }
 
       notification.error({
         message: "로그인 실패",
