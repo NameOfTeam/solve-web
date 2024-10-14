@@ -1,9 +1,9 @@
 import * as S from "./style";
 import useGetMe from "../../hooks/auth/useGetMe";
 import ThemedContainer from "../../components/common/ThemedContainer";
-import { useTheme } from "../../context/theme";
+import { useTheme } from "../../contexts/theme";
 
-const Main = () => {
+const Home = () => {
   const { toggleTheme, setPurpleTheme } = useTheme();
   const { username, loading } = useGetMe();
 
@@ -16,4 +16,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Home;

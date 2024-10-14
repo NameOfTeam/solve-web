@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { keyframes } from "@emotion/react";
-import { primary } from "../../context/theme";
+import { primary } from "../../contexts/theme";
 
 const FadeIn = keyframes`
   0%{
