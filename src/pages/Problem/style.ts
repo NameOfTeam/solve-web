@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import ThemedText from "../../components/common/ThemedText";
 import ThemedBox from "../../components/common/ThemedBox";
-import ThemedContainer from "../../components/common/ThemedContainer";
 
 export const Header = styled.div`
   width: 100%;
@@ -64,7 +63,7 @@ export const SubmitWrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 0 1rem;
+  padding: 0 2rem;
   box-sizing: border-box;
   gap: 1rem;
 `;
@@ -116,11 +115,6 @@ export const TestCaseBox = styled(ThemedBox)`
   padding:0 1rem;
 `;
 
-export const ResultWrap = styled(ThemedContainer)`
-  width:100%;
-  flex:1;
-`;
-
 export const ProgressWrap = styled.div`
   width: 100%;
   padding: 1rem 0;
@@ -154,7 +148,7 @@ export const ProgressText = styled.p`
 export const TestResultWrap = styled.div`
   background-color:black;
   width:100%;
-  flex:1;
+  height: calc(100% - 3rem);
   box-sizing:border-box;
 `
 export const TestResultText = styled.textarea`

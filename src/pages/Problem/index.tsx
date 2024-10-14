@@ -7,7 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import useSubmitProblem from "../../hooks/problem/useSubmitProblem";
 import useGetSubmitProgress from "../../hooks/problem/useGetSubmitProgress";
 import { notification } from "antd";
-import { primary, useTheme } from "../../context/theme";
+import { primary, secondary, useTheme } from "../../context/theme";
 import ThemedLink from "../../components/common/ThemedLink";
 
 const Problem = () => {
@@ -132,7 +132,7 @@ const Problem = () => {
             height="70%"
             width="100%"
             language="python"
-            theme={theme.backgroundColor === "#2b2b2b" ? "vs-dark" : "vs-light"}
+            theme={theme.backgroundColor === "#fff" ? "vs-light" : "vs-dark"}
             options={{
               fontSize: 15,
               minimap: {
@@ -147,11 +147,14 @@ const Problem = () => {
             }}
             onChange={handleCode}
             value={code}
-            
           />
-          <S.ResultWrap>
+          <ThemedContainer>
             <S.TestResultWrap>
-              <S.TestResultText onChange={handleTestInput} value={testInput} onKeyDown={onTestEnter}></S.TestResultText>
+              <S.TestResultText
+                onChange={handleTestInput}
+                value={testInput}
+                onKeyDown={onTestEnter}
+              ></S.TestResultText>
             </S.TestResultWrap>
             <S.ProgressWrap>
               <S.ProgressBarWrap>
@@ -162,7 +165,7 @@ const Problem = () => {
                 )}
               </S.ProgressBarWrap>
             </S.ProgressWrap>
-          </S.ResultWrap>
+          </ThemedContainer>
         </S.EditorWrap>
       </S.Main>
       <S.SubmitWrap>
@@ -175,15 +178,17 @@ const Problem = () => {
           테스트
         </S.Button>
         <S.Button
-          color="#83ff76"
-          $textcolor="#2b2b2b"
+          color={secondary}
+          $textcolor="#fff"
           $activecolor="#84ff76bc"
           onClick={() => {
             submitCode();
           }}
-          disabled={isPending}
+          disabled={isPending || (progress !== 0 && progress < 100)}
         >
-          {isPending ? "채점 중..." : "제출"}
+          {isPending || (progress !== 0 && progress < 100)
+            ? "채점 중..."
+            : "제출"}
         </S.Button>
       </S.SubmitWrap>
     </ThemedContainer>
