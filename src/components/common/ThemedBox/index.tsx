@@ -1,4 +1,4 @@
-import { useTheme } from "../../../context/theme";
+import { useTheme } from "../../../contexts/theme";
 import { ThemedComponent } from "../../../types/theme/theme";
 
 

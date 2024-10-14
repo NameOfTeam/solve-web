@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useTheme } from "../../../context/theme"
+import { useTheme } from "../../../contexts/theme"
 
 const ThemedLink = ({to, children, className, style}:{to: string, children: string | React.ReactNode, className?: string, style?: any}) => {
 

@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useTheme } from "../../../context/theme";
+import { useTheme } from "../../../contexts/theme";
 import { ThemedComponent } from "../../../types/theme/theme";
 
 const Container = styled.div`

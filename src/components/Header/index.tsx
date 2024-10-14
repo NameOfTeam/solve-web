@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import * as S from './style'
 import { useEffect, useState } from 'react';
-import { secondary, useTheme } from '../../context/theme';
+import { secondary, useTheme } from '../../contexts/theme';
 
 const Header = () => {
   const [page, setPage] = useState<string>('home');

@@ -1,6 +1,6 @@
 import { Theme } from "@emotion/react";
 import { createContext, useContext, useEffect, useState } from "react";
-import { useThemeStore } from "../../store/useThemeStore";
+import { useThemeStore } from "../../stores/useThemeStore";
 
 interface ThemeContextType {
   theme: Theme;
