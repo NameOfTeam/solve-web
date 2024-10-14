@@ -9,12 +9,12 @@ const Header = () => {
   const { theme } = useTheme();
 
   useEffect(()=>{
-    if(location.pathname.includes('/problems')){
+    if (location.pathname.includes('/problems')) {
       setPage('problems');
-    }else{
+    } else {
       setPage('home');
     }
-  },[location.pathname]);
+  }, [location.pathname]);
 
 
   return (
@@ -23,7 +23,7 @@ const Header = () => {
         <S.Logo src={theme.backgroundColor === '#FFF' ? "/assets/solve_black.svg" : "/assets/solve.svg"} alt="solve" />
       </S.ToHome>
       <S.MenuWrap>
-        <S.Menu to="/problems" style={page === 'problems' ? { color:secondary } : {}}>문제</S.Menu>
+        <S.Menu to="/problems" style={page === 'problems' ? { color: secondary } : {}}>문제</S.Menu>
         <S.Menu to="/">대회</S.Menu>
         <S.Menu to="/">상점</S.Menu>
       </S.MenuWrap>

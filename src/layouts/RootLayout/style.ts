@@ -7,6 +7,6 @@ export const Container = styled(ThemedContainer)`
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-top:5rem;
-  box-sizing:border-box;
+  padding-top: 5rem;
+  box-sizing: border-box;
 `;

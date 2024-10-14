@@ -15,7 +15,7 @@ const ThemedContainer = ({ className, children }: ThemedComponent) => {
   return (
     <Container
       className={className}
-      style={{ backgroundColor: theme.backgroundColor,borderColor:theme.borderColor }}
+      style={{ backgroundColor: theme.backgroundColor, borderColor: theme.borderColor }}
     >
       {children}
     </Container>
