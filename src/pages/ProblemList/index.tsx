@@ -1,43 +1,40 @@
 import { useNavigate } from "react-router-dom";
 import useGetProblems from "../../hooks/problem/useGetProblems";
+import * as S from './style';
+import ThemedText from "../../components/common/ThemedText";
 
 const ProblemList = () => {
   const { data, ref } = useGetProblems();
   const navigate = useNavigate();
 
   return (
-    <div style={{ overflow: "scroll" }}>
-      <h1>문제</h1>
+    <S.Container>
+      <S.Title>문제</S.Title>
       {data ? (
         data.pages.map((page) => (
-          <div key={page.pageable.pageNumber}>
+          <S.ProblemWrap key={page.pageable.pageNumber}>
             {page.content.map((problem) => (
-              <div
-                style={{
-                  border: "1px solid gray",
-                  borderRadius: "5px",
-                  padding: "1rem 10rem",
-                }}
+              <S.ProblemItem
                 key={problem.id}
                 onClick={() => {
                   navigate(`/problems/${problem.id}`);
                 }}
               >
-                {problem.id} | {problem.title} | {problem.timeLimit} |{" "}
-                {problem.memoryLimit} | {problem.correctRate} | {problem.state}
-              </div>
+                <ThemedText>
+                  {problem.id} | {problem.title} | {problem.timeLimit} |{" "}
+                  {problem.memoryLimit} | {problem.correctRate} |{" "}
+                  {problem.state}
+                </ThemedText>
+              </S.ProblemItem>
             ))}
-          </div>
+          </S.ProblemWrap>
         ))
       ) : (
-        <p>Loading...</p>
+        <ThemedText>문제를 불러오는 중입니다...</ThemedText>
       )}
 
-      <div
-        ref={ref}
-        style={{ height: "1px", width: "100%", background: "red" }}
-      />
-    </div>
+      <div ref={ref} style={{ height: "1px", width: "100%" }} />
+    </S.Container>
   );
 };
 

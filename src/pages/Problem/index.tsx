@@ -6,14 +6,16 @@ import { useNavigate, useParams } from "react-router-dom";
 import useSubmitProblem from "../../hooks/problem/useSubmitProblem";
 import useGetSubmitProgress from "../../hooks/problem/useGetSubmitProgress";
 import { notification } from "antd";
-import { primary, secondary } from "../../contexts/theme";
+import { primary, secondary, useTheme } from "../../contexts/theme";
 import ThemedLink from "../../components/common/ThemedLink";
 import CodeEditor from "../../components/CodeEditor";
+import { ChevronBackOutline } from "react-ionicons";
 
 const Problem = () => {
   const { problemId } = useParams();
   const navigate = useNavigate();
   const [testInput, setTestInput] = useState<string>("");
+  const { theme } = useTheme();
 
   if (!problemId) {
     navigate("/problems");
@@ -60,7 +62,15 @@ const Problem = () => {
   return (
     <ThemedContainer>
       <S.Header>
-        <S.Title>{data?.title}</S.Title>
+        <S.Back to='/problems'>
+          <ChevronBackOutline
+            color={theme.oppositeColor}
+            width="20px"
+            height="20px"
+            style={{ marginTop: 2, cursor: "pointer" }}
+          />
+          <S.Title>{data?.title}</S.Title>
+        </S.Back>
       </S.Header>
       <S.Main>
         <S.ProblemWrap>
@@ -120,7 +130,7 @@ const Problem = () => {
         </S.ProblemWrap>
 
         <S.EditorWrap>
-          <CodeEditor code={code} handleCode={handleCode}/>
+          <CodeEditor code={code} handleCode={handleCode} />
           <ThemedContainer>
             <S.TestResultWrap>
               <S.TestResultText

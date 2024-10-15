@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import instance from "../../libs/axios/customAxios";
 import { notification } from "antd";
 import { useQuery } from "@tanstack/react-query";
 import { getCookie } from "../../libs/react-cookie/cookie";
+import { useUserStore } from "../../stores/useUserStore";
 
 const useGetMe = () => {
-  const [username, setUsername] = useState<string>("");
   const ACCESS_TOKEN = getCookie('ACCESS_TOKEN');
+  const setUser = useUserStore(state=>state.setUser);
 
   const fetchMe = async () => {
     const res = await instance.get("/users/me");
@@ -30,12 +31,11 @@ const useGetMe = () => {
 
   useEffect(() => {
     if (data) {
-      setUsername(data.data.username);
+      setUser(data.data);
     }
   }, [data]);
 
   return {
-    username,
     loading: isLoading,
   };
 };

@@ -29,7 +29,6 @@ export const Logo = styled.img`
 `;
 
 export const Profile = styled.img`
-  background-color: white;
   height: 3rem;
   width: 3rem;
   border-radius: 3rem;

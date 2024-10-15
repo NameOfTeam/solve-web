@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 import ThemedText from "../../components/common/ThemedText";
 import ThemedBox from "../../components/common/ThemedBox";
+import { Link } from "react-router-dom";
 
 export const Header = styled.div`
   width: 100%;
   height: 4rem;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   padding: 0 1rem;
   box-sizing: border-box;
 `;
@@ -16,12 +16,11 @@ export const Title = styled(ThemedText)`
   color: white;
   cursor: pointer;
 `;
-export const Back = styled.img`
-  width: 1.5rem;
-  height: 1.5rem;
-  object-fit: contain;
-  object-position: center;
-`;
+
+export const Back = styled(Link)`
+  display:flex;
+  text-decoration:none;
+`
 
 export const Main = styled.div`
   width: 100%;
