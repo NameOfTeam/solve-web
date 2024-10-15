@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { secondary, useTheme } from '../../contexts/theme';
 import useGetMe from '../../hooks/auth/useGetMe';
 import Skeleton from '../Skeleton';
-// import { useUserStore } from '../../stores/useUserStore';
+import { useUserStore } from '../../stores/useUserStore';
 
 const Header = () => {
   const [page, setPage] = useState<string>('home');
@@ -12,7 +12,7 @@ const Header = () => {
   const location = useLocation();
   const { theme } = useTheme();
   const { loading } = useGetMe();
-  // const user = useUserStore(state=>state.user);
+  const user = useUserStore(state=>state.user);
 
   useEffect(()=>{
     if (location.pathname.includes('/problems')) {
@@ -45,14 +45,14 @@ const Header = () => {
         <S.Menu to="/">상점</S.Menu>
       </S.MenuWrap>
       {loading && imageLoading && (
-        <Skeleton width={48} height={48} style={{borderRadius:50}}/> 
+        <Skeleton width={48} height={48} style={{ borderRadius: 50 }} />
       )}
       <S.Profile
         onLoad={() => {
           setImageLoading(false);
         }}
-        src="https://file.cher1shrxd.me/file-1727415813234-534582689.jpg"
-        style={loading && imageLoading ? {width: 0, height: 0} : {}}
+        src={`${import.meta.env.VITE_API_URL}/avatars/${user.id}.webp`}
+        style={loading && imageLoading ? { width: 0, height: 0 } : {}}
       />
     </S.Container>
   );

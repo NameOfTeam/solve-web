@@ -25,12 +25,12 @@ const Skeleton = ({
     <SkeletonContainer
       $width={width}
       $height={height}
-      $backgroundColor={theme.boxColor}
+      $backgroundColor={theme.borderColor}
       style={style}
     >
       <GradientAnimation
-        $boxColor={theme.boxColor}
-        $borderColor={theme.borderColor}        
+        $boxColor={theme.borderColor}
+        $borderColor={theme.boxBorderColor}        
         $width={width}
       />
     </SkeletonContainer>

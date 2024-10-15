@@ -4,10 +4,13 @@ import { notification } from "antd";
 import { useQuery } from "@tanstack/react-query";
 import { getCookie } from "../../libs/react-cookie/cookie";
 import { useUserStore } from "../../stores/useUserStore";
+import { useLoadingStore } from "../../stores/useLoadingStore";
 
 const useGetMe = () => {
   const ACCESS_TOKEN = getCookie('ACCESS_TOKEN');
   const setUser = useUserStore(state=>state.setUser);
+  const loading = useLoadingStore(state=>state.loading);
+  const setLoading = useLoadingStore(state=>state.setLoading);
 
   const fetchMe = async () => {
     const res = await instance.get("/users/me");
@@ -35,8 +38,12 @@ const useGetMe = () => {
     }
   }, [data]);
 
+  useEffect(()=>{
+    setLoading(isLoading);
+  },[isLoading]);
+
   return {
-    loading: isLoading,
+    loading
   };
 };
 
