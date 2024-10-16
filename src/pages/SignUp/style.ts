@@ -142,7 +142,7 @@ export const Button = styled.button`
   padding: 1rem;
   color: white;
   text-align: center;
-  background-color: ${primary};
+  background-color: ${primary[900]};
   border-radius: 1rem;
   transition: all 0.2s;
   animation: ${FadeIn} 0.7s 0.6s forwards;

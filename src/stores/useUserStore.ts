@@ -15,6 +15,9 @@ export const useUserStore = create<UserStore>((set)=>({
     money: 0,
     solvedProblem: 0,
     participatedContest: 0,
+    streak: 0,
+    streakToday: false,
+    rank: 'Rookie',
   },
   setUser: (user: User) => set({user})
 }))

@@ -6,6 +6,9 @@ export interface User {
   money: number;
   participatedContest: number;
   solvedProblem: number;
+  streak: number;
+  streakToday: boolean;
+  rank: string;
 }
 
 // localhost:8080/avatars/{userId}.webp

@@ -37,7 +37,7 @@ const Header = () => {
       <S.MenuWrap>
         <S.Menu
           to="/problems"
-          style={page === "problems" ? { color: secondary } : {}}
+          style={page === "problems" ? { color: secondary[300] } : {}}
         >
           문제
         </S.Menu>

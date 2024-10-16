@@ -142,7 +142,7 @@ const Problem = () => {
             <S.ProgressWrap>
               <S.ProgressBarWrap>
                 {progress > 0 && (
-                  <S.Progress progress={progress} background={primary}>
+                  <S.Progress progress={progress} background={primary[900]}>
                     <S.ProgressText>{progress}%</S.ProgressText>
                   </S.Progress>
                 )}
@@ -161,7 +161,7 @@ const Problem = () => {
           테스트
         </S.Button>
         <S.Button
-          color={secondary}
+          color={secondary[900]}
           $textcolor="#fff"
           $activecolor="#84ff76bc"
           onClick={() => {

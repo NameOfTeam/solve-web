@@ -133,7 +133,7 @@ export const AutoLoginWrap = styled.div`
 export const Check = styled.input`
   width: 1rem;
   height: 1rem;
-  accent-color: ${primary};
+  accent-color: ${primary[900]};
   animation: ${FadeIn} 0.7s 0.3s forwards;
   opacity: 0;
 `;
@@ -147,7 +147,7 @@ export const Button = styled.button`
   padding: 1rem;
   color: white;
   text-align: center;
-  background-color: ${primary};
+  background-color: ${primary[900]};
   border-radius: 1rem;
   transition: all 0.2s;
   animation: ${FadeIn} 0.7s 0.6s forwards;
