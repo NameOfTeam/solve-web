@@ -34,9 +34,12 @@ export const StreakIcon = styled.img`
 export const StreakValue = styled(ThemedText)`
   font-size: 1.6rem;
   font-weight: 300;
+  display: flex;
+  align-items: center;
 `;
 export const StreakDate = styled.span`
   font-weight: 500;
+  margin-left: 0.5rem;
 `;
 export const StreakAlert = styled(ThemedText)`
   font-size: 1.2rem;

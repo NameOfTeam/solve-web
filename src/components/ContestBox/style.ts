@@ -25,7 +25,7 @@ export const ContestWrap = styled.div`
 
 export const ContestItem = styled.div<{ border: string }>`
   width: 100%;
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,4 +42,17 @@ export const ContestTtile = styled(ThemedText)`
 
 export const ContestStatus = styled(ThemedText)`
   font-size:1.2rem;
+`
+
+export const EmptyContestWrap = styled.div`
+  width:100%;
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+`
+
+export const EmptyContest = styled.p<{color: string}>`
+  font-size:2rem;
+  color: ${props=>props.color};
 `

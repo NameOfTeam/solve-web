@@ -7,7 +7,7 @@ const ProfileBox = ({loading, imageLoading, setImageLoading, user} : {loading: b
   return (
     <S.Container>
       {loading && imageLoading && (
-        <Skeleton width={112} height={112} style={{ borderRadius: 50 }} />
+        <Skeleton width={112} height={112} style={{ borderRadius: 100 }} />
       )}
       <S.Avatar
         src={`${import.meta.env.VITE_API_URL}/avatars/${user.id}.webp`}
