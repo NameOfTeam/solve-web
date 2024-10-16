@@ -11,21 +11,14 @@ const StreakBox = ({user}:{user: User}) => {
       <S.StreakTitle>스트릭</S.StreakTitle>
       <S.StreakValueWrap>
         <S.StreakIcon src="/assets/streak.svg" />
-        <S.StreakValue>
-          현재{" "}
-          {loading ? (
-            <>
-              <Skeleton
-                width={50}
-                height={30}
-                style={{ borderRadius: 8, margin: "0 0.25rem" }}
-              />
-              {"일"}
-            </>
-          ) : (
-            <S.StreakDate>{user.streak} 일</S.StreakDate>
-          )}
-        </S.StreakValue>
+        {loading ? (
+          <Skeleton width={100} height={30} style={{ borderRadius: 8 }} />
+        ) : (
+          <S.StreakValue>
+            현재 <S.StreakDate>{user.streak} 일</S.StreakDate>
+          </S.StreakValue>
+        )}
+
         <S.StreakIcon src="/assets/streak.svg" />
       </S.StreakValueWrap>
       {loading ? (

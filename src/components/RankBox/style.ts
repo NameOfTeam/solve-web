@@ -56,8 +56,6 @@ export const LeftScore = styled(ThemedText)`
   font-size: 1.2rem;
   font-weight: 300;
   align-self: flex-end;
-  display: flex;
-  align-items: center;
 `;
 export const LeftScoreValue = styled.span`
   font-weight: 500;

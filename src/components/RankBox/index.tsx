@@ -13,7 +13,7 @@ const RankBox = () => {
       <S.RankValueWrap>
         {loading ? (
           <>
-            <Skeleton width={120} height={40} style={{ borderRadius: 8 }} />
+            <Skeleton width={120} height={30} style={{ borderRadius: 8 }} />
             <Skeleton width={400} height={30} style={{ borderRadius: 8 }} />
           </>
         ) : (
@@ -25,14 +25,17 @@ const RankBox = () => {
           </>
         )}
       </S.RankValueWrap>
-      <S.LeftScore>
-        다음 승급까지
-        {loading ? (
-          <Skeleton width={50} height={30} style={{ borderRadius: 8, marginLeft: 8 }} />
-        ) : (
-          <S.LeftScoreValue>-205</S.LeftScoreValue>
-        )}
-      </S.LeftScore>
+      {loading ? (
+        <Skeleton
+          width={120}
+          height={20}
+          style={{ borderRadius: 8, alignSelf: 'flex-end' }}
+        />
+      ) : (
+        <S.LeftScore>
+          다음 승급까지 <S.LeftScoreValue>-205</S.LeftScoreValue>
+        </S.LeftScore>
+      )}
     </S.RankWrap>
   );
 }
