@@ -1,12 +1,13 @@
 import { useLocation } from "react-router-dom";
 import * as S from "./style";
 import { useEffect, useState } from "react";
-import { secondary, useTheme } from "../../contexts/theme";
+import { primary, secondary, useTheme } from "../../contexts/theme";
 import useGetMe from "../../hooks/auth/useGetMe";
 import Skeleton from "../Skeleton";
 import { useUserStore } from "../../stores/useUserStore";
 import ThemedText from "../common/ThemedText";
 import Menu from "../Menu";
+import { getCookie } from "../../libs/react-cookie/cookie";
 
 const Header = () => {
   const [page, setPage] = useState<string>("home");
@@ -25,6 +26,8 @@ const Header = () => {
       setPage('home');
     }
   }, [location.pathname]);
+
+  const ACCESS_TOKEN = getCookie('ACCESS_TOKEN');
 
   return (
     <S.Container>
@@ -60,16 +63,25 @@ const Header = () => {
         <ThemedText onClick={setLightTheme}>라이트</ThemedText>
         <ThemedText onClick={setPurpleTheme}>퍼플</ThemedText>
       </S.MenuWrap>
-      {loading && imageLoading && (
-        <Skeleton width={48} height={48} style={{ borderRadius: 50 }} />
+      {ACCESS_TOKEN ? (
+        <>
+          {loading && imageLoading && (
+            <Skeleton width={48} height={48} style={{ borderRadius: 50 }} />
+          )}
+          <S.Profile
+            onLoad={() => {
+              setImageLoading(false);
+            }}
+            src={`${import.meta.env.VITE_API_URL}/avatars/${user.id}.webp`}
+            style={loading && imageLoading ? { width: 0, height: 0 } : {}}
+          />
+        </>
+      ) : (
+        <S.ButtonWrap>
+          <S.Button to='/login' background={primary[900]}>로그인</S.Button>
+          <S.Button to='/signup' background={secondary[900]}>회원가입</S.Button>
+        </S.ButtonWrap>
       )}
-      <S.Profile
-        onLoad={() => {
-          setImageLoading(false);
-        }}
-        src={`${import.meta.env.VITE_API_URL}/avatars/${user.id}.webp`}
-        style={loading && imageLoading ? { width: 0, height: 0 } : {}}
-      />
     </S.Container>
   );
 };

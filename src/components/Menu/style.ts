@@ -23,6 +23,7 @@ export const Container = styled(ThemedContainer)<{ shadow: string }>`
   transition: all 0.5s;
   animation: ${FadeIn} 0.2s forwards;
   transform-origin: top left;
+  z-index: 9999;
   &:hover {
     display: flex;
   }

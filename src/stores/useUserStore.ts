@@ -4,20 +4,36 @@ import { User } from "../types/auth/user";
 interface UserStore {
   user: User;
   setUser: (user: User) => void;
+  clearUser: () => void;
 }
 
-export const useUserStore = create<UserStore>((set)=>({
+export const useUserStore = create<UserStore>((set) => ({
   user: {
-    id: '',
-    email: '',
-    role: 'USER',
-    username: '',
+    id: "",
+    email: "",
+    role: "USER",
+    username: "",
     money: 0,
     solvedProblem: 0,
     participatedContest: 0,
     streak: 0,
-    streakToday: false,
-    rank: 'Rookie',
+    solvedToday: false,
+    rank: "Rookie",
   },
-  setUser: (user: User) => set({user})
-}))
+  setUser: (user: User) => set({ user }),
+  clearUser: () =>
+    set({
+      user: {
+        id: "",
+        email: "",
+        role: "USER",
+        username: "",
+        money: 0,
+        solvedProblem: 0,
+        participatedContest: 0,
+        streak: 0,
+        solvedToday: false,
+        rank: "Rookie",
+      },
+    }),
+}));

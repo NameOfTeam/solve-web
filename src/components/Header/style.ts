@@ -62,3 +62,23 @@ export const Menu = styled(ThemedLink)`
   cursor: pointer;
   transition: all 0.2s;
 `;
+
+export const ButtonWrap = styled.div`
+  width: 11rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+
+export const Button = styled(Link)<{background: string}>`
+  width: 5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: ${props=>props.background};
+  border-radius: 0.5rem;
+  text-decoration: none;
+`

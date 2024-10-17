@@ -7,7 +7,7 @@ export interface User {
   participatedContest: number;
   solvedProblem: number;
   streak: number;
-  streakToday: boolean;
+  solvedToday: boolean;
   rank: string;
 }
 
