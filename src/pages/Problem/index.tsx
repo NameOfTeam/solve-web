@@ -9,7 +9,7 @@ import { notification } from "antd";
 import { primary, secondary, useTheme } from "../../contexts/theme";
 import ThemedLink from "../../components/common/ThemedLink";
 import CodeEditor from "../../components/CodeEditor";
-import { ChevronBack } from "react-ionicons";
+import { IoChevronBackOutline } from "react-icons/io5";
 
 const Problem = () => {
   const { problemId } = useParams();
@@ -62,13 +62,8 @@ const Problem = () => {
   return (
     <ThemedContainer>
       <S.Header>
-        <S.Back to='/problems'>
-          <ChevronBack
-            color={theme.oppositeColor}
-            width="20px"
-            height="20px"
-            style={{ marginTop: 2, cursor: "pointer" }}
-          />
+        <S.Back to="/problems">
+          <IoChevronBackOutline color={theme.oppositeColor} size={24}/>
           <S.Title>{data?.title}</S.Title>
         </S.Back>
       </S.Header>

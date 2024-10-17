@@ -15,7 +15,7 @@ const StreakBox = ({user}:{user: User}) => {
           <Skeleton width={100} height={30} style={{ borderRadius: 8 }} />
         ) : (
           <S.StreakValue>
-            현재 <S.StreakDate>{user.streak} 일</S.StreakDate>
+            현재 <S.StreakDate>{user.streak}일</S.StreakDate>
           </S.StreakValue>
         )}
 
@@ -24,7 +24,11 @@ const StreakBox = ({user}:{user: User}) => {
       {loading ? (
         <Skeleton width={250} height={30} style={{ borderRadius: 8 }} />
       ) : (
-        <S.StreakAlert>오늘은 아직 문제를 풀지 않았어요.</S.StreakAlert>
+        <S.StreakAlert>
+          {user.streakToday
+            ? "오늘 문제를 풀었어요"
+            : "오늘은 아직 문제를 풀지 않았어요."}
+        </S.StreakAlert>
       )}
     </S.Container>
   );

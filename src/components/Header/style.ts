@@ -46,6 +46,16 @@ export const MenuWrap = styled.div`
   gap: 1rem;
 `;
 
+export const MenuItemWrap = styled.div`
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  &:hover > .menu {
+    display: flex;
+  }
+`;
+
 export const Menu = styled(ThemedLink)`
   font-size: 1.5rem;
   text-decoration: none;

@@ -57,7 +57,8 @@ const useLogin = () => {
     } catch (err: any) {
       if (
         err.response &&
-        (err.response.data.status === 401 || err.response.data.status === 404)
+        (err.response.data.code === "PASSWORD_NOT_MATCH" ||
+          err.response.data.code === "USER_NOT_FOUND_BY_USERNAME")
       ) {
         notification.error({
           message: "로그인 실패",

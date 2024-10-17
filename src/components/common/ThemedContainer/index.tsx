@@ -7,6 +7,7 @@ const Container = styled.div`
   flex: 1;
   border-style: solid;
   border-width: 0;
+  transition: all 0.2s;
 `;
 
 const ThemedContainer = ({ className, children }: ThemedComponent) => {

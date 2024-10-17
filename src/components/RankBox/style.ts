@@ -8,18 +8,10 @@ export const Container = styled(ThemedBox)`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-
-  // 모바일 기본 레이아웃
-  grid-column: 1 / -1;
-
-
-  // 데스크탑 (1280px 이상)
-  @media (min-width: 1570px) {
-    grid-column: 8 / 18;
-    grid-row: 6 / 12;
-    padding: 2rem;
-  }
+  grid-column: 8 / 18;
+  grid-row: 6 / 12;
+  padding: 2rem;
+  gap: 0.5rem;
 `;
 export const RankTitle = styled(ThemedText)`
   font-size: 1.8rem;

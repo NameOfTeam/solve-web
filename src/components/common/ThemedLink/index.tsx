@@ -6,7 +6,7 @@ const ThemedLink = ({to, children, className, style}:{to: string, children: stri
   const { theme } = useTheme();
 
   return (
-    <Link to={to} className={className} style={{color: theme.oppositeColor, ...style}}>{children}</Link>
+    <Link to={to} className={className} style={{color: theme.oppositeColor, transition: 'all 0.2s', ...style}}>{children}</Link>
   )
 }
 

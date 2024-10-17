@@ -23,7 +23,7 @@ const Home = () => {
       <StreakBox user={user} />
       <RankBox />
       <ContestBox />
-      <S.BentoBox1>
+      {/* <S.BentoBox1>
         <></>
       </S.BentoBox1>
       <S.BentoBox2>
@@ -37,7 +37,7 @@ const Home = () => {
       </S.BentoBox4>
       <S.BentoBox5>
         <></>
-      </S.BentoBox5>
+      </S.BentoBox5> */}
     </S.Container>
   );
 };
