@@ -4,7 +4,7 @@ import ThemedBox from "../../components/common/ThemedBox";
 import ThemedText from "../../components/common/ThemedText";
 
 export const Container = styled(ThemedContainer)`
-  overflow-y: scroll;
+  min-height: calc(100vh - 5rem);
   padding: 2rem;
   box-sizing: border-box;
 `;

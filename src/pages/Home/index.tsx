@@ -14,10 +14,30 @@ const Home = () => {
 
   return (
     <S.Container>
-      <ProfileBox loading={loading} imageLoading={imageLoading} setImageLoading={setImageLoading} user={user}/>
-      <StreakBox user={user}/>
+      <ProfileBox
+        loading={loading}
+        imageLoading={imageLoading}
+        setImageLoading={setImageLoading}
+        user={user}
+      />
+      <StreakBox user={user} />
       <RankBox />
       <ContestBox />
+      <S.BentoBox1>
+        <></>
+      </S.BentoBox1>
+      <S.BentoBox2>
+        <></>
+      </S.BentoBox2>
+      <S.BentoBox3>
+        <></>
+      </S.BentoBox3>
+      <S.BentoBox4>
+        <></>
+      </S.BentoBox4>
+      <S.BentoBox5>
+        <></>
+      </S.BentoBox5>
     </S.Container>
   );
 };

@@ -4,13 +4,22 @@ import ThemedText from "../common/ThemedText";
 
 export const Container = styled(ThemedBox)`
   border-radius: 1rem;
-  grid-column: 1/8;
-  grid-row: 1/12;
-  padding: 2rem;
+  padding: 1rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+
+  // 모바일 기본 레이아웃
+  grid-column: 1 / -1;
+
+
+  // 데스크탑 (1280px 이상)
+  @media (min-width: 1570px) {
+    grid-column: 1 / 8;
+    grid-row: 1 / 12;
+    padding: 2rem;
+  }
 `;
 export const Avatar = styled.img`
   width: 7rem;

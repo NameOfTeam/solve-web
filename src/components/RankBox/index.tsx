@@ -8,7 +8,7 @@ const RankBox = () => {
   const { theme } = useTheme();
 
   return (
-    <S.RankWrap>
+    <S.Container>
       <S.RankTitle>랭크</S.RankTitle>
       <S.RankValueWrap>
         {loading ? (
@@ -36,7 +36,7 @@ const RankBox = () => {
           다음 승급까지 <S.LeftScoreValue>-205</S.LeftScoreValue>
         </S.LeftScore>
       )}
-    </S.RankWrap>
+    </S.Container>
   );
 }
 

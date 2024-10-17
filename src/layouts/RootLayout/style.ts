@@ -10,3 +10,9 @@ export const Container = styled(ThemedContainer)`
   padding-top: 5rem;
   box-sizing: border-box;
 `;
+
+export const Main = styled.div`
+  width:100%;
+  height:100%;
+  overflow-y:scroll;
+`

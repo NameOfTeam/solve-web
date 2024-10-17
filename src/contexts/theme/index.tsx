@@ -4,7 +4,8 @@ import { useThemeStore } from "../../stores/useThemeStore";
 
 interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
+  setDarkTheme: () => void;
+  setLightTheme: () => void;
   setPurpleTheme: () => void;
 }
 
@@ -38,14 +39,16 @@ export const secondary = {
 
 const lightTheme: Theme = {
   backgroundColor: "#FFF",
+  footerColor: "rgba(250,250,250)",
   oppositeColor: "#1b1b1b",
-  boxColor: "#E5E5E5",
+  boxColor: "#EFEFEF",
   borderColor: "#F1F1F1",
   boxBorderColor: "#CCC",
 };
 
 const purpleTheme: Theme = {
-  backgroundColor: "#423F4A",
+  backgroundColor: "#423f4a",
+  footerColor: "rgba(0,0,0,0.3)",
   oppositeColor: "#F5F5F5",
   boxColor: "#5A5766",
   borderColor: "#4E4B58",
@@ -54,6 +57,7 @@ const purpleTheme: Theme = {
 
 const darkTheme: Theme = {
   backgroundColor: "#2b2b2b",
+  footerColor: "rgba(0,0,0,0.3)",
   oppositeColor: "#F5F5F5",
   boxColor: "#373737",
   borderColor: "#323232",
@@ -62,7 +66,8 @@ const darkTheme: Theme = {
 
 const ThemeContext = createContext<ThemeContextType>({
   theme: lightTheme,
-  toggleTheme: () => {},
+  setDarkTheme: () => {},
+  setLightTheme: () => {},
   setPurpleTheme: () => {}
 });
 
@@ -75,15 +80,14 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     storedTheme === "dark" ? darkTheme : storedTheme === "purple" ? purpleTheme : lightTheme
   );
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) =>
-      prevTheme === lightTheme ? darkTheme : lightTheme
-    );
-    if (theme === darkTheme) {
-      storeTheme("light");
-    } else {
-      storeTheme("dark");
-    }
+  const setDarkTheme = () => {
+    setTheme(darkTheme);
+    storeTheme('dark');
+  }
+
+  const setLightTheme = () => {
+    setTheme(lightTheme);
+    storeTheme("light");
   };
 
   const setPurpleTheme = () => {
@@ -102,7 +106,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   }, [storedTheme]);
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setPurpleTheme }}>
+    <ThemeContext.Provider value={{ theme, setDarkTheme, setPurpleTheme, setLightTheme }}>
       {children}
     </ThemeContext.Provider>
   );

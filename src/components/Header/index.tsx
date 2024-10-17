@@ -5,12 +5,13 @@ import { secondary, useTheme } from '../../contexts/theme';
 import useGetMe from '../../hooks/auth/useGetMe';
 import Skeleton from '../Skeleton';
 import { useUserStore } from '../../stores/useUserStore';
+import ThemedText from '../common/ThemedText';
 
 const Header = () => {
   const [page, setPage] = useState<string>('home');
   const [imageLoading, setImageLoading] = useState(true);
   const location = useLocation();
-  const { theme } = useTheme();
+  const { theme, setDarkTheme, setLightTheme, setPurpleTheme } = useTheme();
   const { loading } = useGetMe();
   const user = useUserStore(state=>state.user);
 
@@ -43,6 +44,9 @@ const Header = () => {
         </S.Menu>
         <S.Menu to="/">대회</S.Menu>
         <S.Menu to="/">상점</S.Menu>
+        <ThemedText onClick={setDarkTheme}>다크</ThemedText>
+        <ThemedText onClick={setLightTheme}>라이트</ThemedText>
+        <ThemedText onClick={setPurpleTheme}>퍼플</ThemedText>
       </S.MenuWrap>
       {loading && imageLoading && (
         <Skeleton width={48} height={48} style={{ borderRadius: 50 }} />

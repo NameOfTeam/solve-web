@@ -7,5 +7,6 @@ declare module "@emotion/react" {
     boxColor: string;
     borderColor: string;
     boxBorderColor: string;
+    footerColor: string;
   }
 }

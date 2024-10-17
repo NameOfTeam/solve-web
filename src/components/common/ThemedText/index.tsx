@@ -1,11 +1,11 @@
 import { useTheme } from "../../../contexts/theme";
 import { ThemedComponent } from "../../../types/theme/theme";
 
-const ThemedText = ({ className, children }: ThemedComponent) => {
+const ThemedText = ({ className, children, onClick }: ThemedComponent) => {
   const { theme } = useTheme();
 
   return (
-    <p className={className} style={{ color: theme.oppositeColor }}>
+    <p className={className} style={{ color: theme.oppositeColor }} onClick={onClick}>
       {children}
     </p>
   );

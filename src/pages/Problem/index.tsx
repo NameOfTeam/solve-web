@@ -9,7 +9,7 @@ import { notification } from "antd";
 import { primary, secondary, useTheme } from "../../contexts/theme";
 import ThemedLink from "../../components/common/ThemedLink";
 import CodeEditor from "../../components/CodeEditor";
-import { ChevronBackOutline } from "react-ionicons";
+import { ChevronBack } from "react-ionicons";
 
 const Problem = () => {
   const { problemId } = useParams();
@@ -63,7 +63,7 @@ const Problem = () => {
     <ThemedContainer>
       <S.Header>
         <S.Back to='/problems'>
-          <ChevronBackOutline
+          <ChevronBack
             color={theme.oppositeColor}
             width="20px"
             height="20px"
