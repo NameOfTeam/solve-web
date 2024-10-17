@@ -16,7 +16,6 @@ export const Line = styled.div<{background: string}>`
 export const LogoWrap = styled.div`
   flex: 1;
   height: 15rem;
-  flex-direction: column;
   display: flex;
   align-items: center;
   justify-content: center;
