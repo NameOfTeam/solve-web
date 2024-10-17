@@ -7,6 +7,7 @@ import Signup from "../../pages/SignUp";
 import ProblemList from "../../pages/ProblemList";
 import Problem from "../../pages/Problem";
 import Verify from "../../pages/Verify";
+import ContestList from "../../pages/ContestList";
 
 const Router = () => {
   return (
@@ -15,6 +16,7 @@ const Router = () => {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="problems" element={<ProblemList />} />
+          <Route path='contests' element={<ContestList />} />
         </Route>
         <Route path="/verify" element={<Verify />}/>
         <Route path="/problems/:problemId" element={<Problem />} />

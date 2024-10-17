@@ -19,8 +19,10 @@ const Header = () => {
   useEffect(() => {
     if (location.pathname.includes("/problems")) {
       setPage("problems");
+    } else if (location.pathname.includes('/contests')) {
+      setPage("contests");
     } else {
-      setPage("home");
+      setPage('home');
     }
   }, [location.pathname]);
 
@@ -44,7 +46,12 @@ const Header = () => {
           >
             문제
           </S.Menu>
-          <S.Menu to="/">대회</S.Menu>
+          <S.Menu
+            to="/contests"
+            style={page === "contests" ? { color: secondary[300] } : {}}
+          >
+            대회
+          </S.Menu>
           <S.Menu to="/">상점</S.Menu>
           <Menu />
         </S.MenuItemWrap>
