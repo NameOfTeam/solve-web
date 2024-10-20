@@ -7,7 +7,7 @@ export const Container = styled(ThemedContainer)`
   display: grid;
   box-sizing: border-box;
   grid-template-columns: repeat(32, 1fr);
-  grid-template-rows: repeat(20, 1fr);
+  grid-template-rows: repeat(20, minmax(16px, 1fr));
   gap: 1.5rem;
   padding: 2rem;
 

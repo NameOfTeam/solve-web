@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import ThemedContainer from "../../components/common/ThemedContainer";
 import ThemedBox from "../../components/common/ThemedBox";
+import ThemedText from "../../components/common/ThemedText";
 
 export const Container = styled(ThemedContainer)`
   min-height: calc(100vh - 5rem);
@@ -39,7 +40,38 @@ export const UserInfoWrap = styled(ThemedBox)`
   grid-column: 1 / 11;
   grid-row: 1 / 10;
   border-radius: 1rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 1rem);
+  grid-template-rows: repeat(auto-fill, 1rem);
 `;
+
+export const ProfileImageWrap = styled.img`
+  grid-column: 1 / 12;
+  grid-row: 1 / 12;
+  width: 100%;
+  border-radius: 500rem;
+  object-fit: cover;
+  object-position: center;
+`
+
+export const Username = styled(ThemedText)`
+  font-size: 3rem;
+  grid-column: 13 / -1;
+  grid-row: 1 / 6;
+  display: flex;
+  align-items: center;
+`
+
+export const Introduction = styled(ThemedText)`
+  font-size: 1.5rem;
+  font-weight: 300;
+  grid-column: 13 / -1;
+  grid-row: 6 / 12;
+  word-break: keep-all;
+`;
+
 
 export const badgeWrap = styled(ThemedBox)`
   grid-column: 11 / 17;
