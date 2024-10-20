@@ -4,7 +4,6 @@ import ThemedBox from "../../components/common/ThemedBox";
 import { MOBILE, TABLET } from "../../constants/mediaQuery";
 
 export const Container = styled(ThemedContainer)`
-  width: 100%;
   display: grid;
   box-sizing: border-box;
   grid-template-columns: repeat(32, 1fr);

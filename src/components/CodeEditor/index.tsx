@@ -29,7 +29,7 @@ const CodeEditor = ({code, handleCode}:{code: string, handleCode: OnChange}) => 
       height="70%"
       width="100%"
       language="python"
-      theme={theme.backgroundColor === "#fff" ? "vs-light" : "vs-dark"}
+      theme={theme.backgroundColor === "#FFF" ? "vs-light" : "vs-dark"}
       options={{
         fontSize: 15,
         minimap: {

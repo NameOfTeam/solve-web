@@ -8,6 +8,7 @@ import ProblemList from "../../pages/ProblemList";
 import Problem from "../../pages/Problem";
 import Verify from "../../pages/Verify";
 import ContestList from "../../pages/ContestList";
+import Profile from "../../pages/Profile";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
           <Route index element={<Home />} />
           <Route path="problems" element={<ProblemList />} />
           <Route path='contests' element={<ContestList />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
         <Route path="/verify" element={<Verify />}/>
         <Route path="/problems/:problemId" element={<Problem />} />
