@@ -1,13 +1,23 @@
-import { Dispatch } from 'react';
-import Skeleton from '../Skeleton';
-import * as S from './style'
-import { User } from '../../types/auth/user';
-import { getCookie } from '../../libs/react-cookie/cookie';
-import ThemedText from '../common/ThemedText';
+import { Dispatch } from "react";
+import Skeleton from "../Skeleton";
+import * as S from "./style";
+import { User } from "../../types/user/user";
+import { getCookie } from "../../libs/react-cookie/cookie";
+import ThemedText from "../common/ThemedText";
 
-const ProfileBox = ({loading, imageLoading, setImageLoading, user} : {loading: boolean, imageLoading: boolean, setImageLoading: Dispatch<boolean>, user: User}) => {
-  const ACCESS_TOKEN = getCookie('ACCESS_TOKEN');
-  if(ACCESS_TOKEN) {
+const ProfileBox = ({
+  loading,
+  imageLoading,
+  setImageLoading,
+  user,
+}: {
+  loading: boolean;
+  imageLoading: boolean;
+  setImageLoading: Dispatch<boolean>;
+  user: User;
+}) => {
+  const ACCESS_TOKEN = getCookie("ACCESS_TOKEN");
+  if (ACCESS_TOKEN) {
     return (
       <S.Container>
         {loading && imageLoading && (
@@ -53,13 +63,13 @@ const ProfileBox = ({loading, imageLoading, setImageLoading, user} : {loading: b
         </S.StatWrap>
       </S.Container>
     );
-  }else{
+  } else {
     return (
       <S.Container>
         <ThemedText>로그인 후 이용해주세요.</ThemedText>
       </S.Container>
-    )
+    );
   }
-}
+};
 
-export default ProfileBox
+export default ProfileBox;

@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import ThemedBox from "../common/ThemedBox";
 import ThemedText from "../common/ThemedText";
+import { MOBILE, TABLET } from "../../constants/mediaQuery";
 
 export const Container = styled(ThemedBox)`
   border-radius: 1rem;
@@ -12,6 +13,15 @@ export const Container = styled(ThemedBox)`
   grid-row: 6 / 12;
   padding: 2rem;
   gap: 0.5rem;
+
+  @media (max-width: ${TABLET}) {
+    grid-column: 8 / 19;
+  }
+
+  @media (max-width: ${MOBILE}) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
 `;
 export const RankTitle = styled(ThemedText)`
   font-size: 1.8rem;

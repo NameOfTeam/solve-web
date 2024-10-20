@@ -20,6 +20,7 @@ export const SkeletonContainer = styled.div<{
   background-color: ${(props) => props.$backgroundColor};
   overflow: hidden;
   position: relative;
+  z-index: 99;
 `;
 
 export const GradientAnimation = styled.div<{

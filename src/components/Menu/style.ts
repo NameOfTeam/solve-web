@@ -15,6 +15,7 @@ export const Container = styled(ThemedContainer)<{ shadow: string }>`
   width: 50rem;
   height: 20rem;
   position: fixed;
+  z-index: 999;
   top: 5rem;
   left: 12rem;
   box-shadow: 0.0625rem 0.0625rem 0.625rem 0.0625rem ${(props) => props.shadow};
@@ -23,7 +24,6 @@ export const Container = styled(ThemedContainer)<{ shadow: string }>`
   transition: all 0.5s;
   animation: ${FadeIn} 0.2s forwards;
   transform-origin: top left;
-  z-index: 9999;
   &:hover {
     display: flex;
   }

@@ -1,15 +1,15 @@
-import { getCookie } from '../../libs/react-cookie/cookie';
-import { useLoadingStore } from '../../stores/useLoadingStore';
-import { User } from '../../types/auth/user';
-import ThemedText from '../common/ThemedText';
-import Skeleton from '../Skeleton';
-import * as S from './style'
+import { getCookie } from "../../libs/react-cookie/cookie";
+import { useLoadingStore } from "../../stores/useLoadingStore";
+import { User } from "../../types/user/user";
+import ThemedText from "../common/ThemedText";
+import Skeleton from "../Skeleton";
+import * as S from "./style";
 
-const StreakBox = ({user}:{user: User}) => {
-  const loading = useLoadingStore(state=>state.loading);
+const StreakBox = ({ user }: { user: User }) => {
+  const loading = useLoadingStore((state) => state.loading);
 
   const ACCESS_TOKEN = getCookie("ACCESS_TOKEN");
-  if(ACCESS_TOKEN){
+  if (ACCESS_TOKEN) {
     return (
       <S.Container>
         <S.StreakTitle>스트릭</S.StreakTitle>
@@ -36,14 +36,13 @@ const StreakBox = ({user}:{user: User}) => {
         )}
       </S.Container>
     );
-  }else{
+  } else {
     return (
       <S.Container>
         <ThemedText>로그인 후 이용해주세요.</ThemedText>
       </S.Container>
     );
   }
-  
-}
+};
 
-export default StreakBox
+export default StreakBox;

@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import ThemedBox from "../common/ThemedBox";
 import { secondary } from "../../contexts/theme";
 import ThemedText from "../common/ThemedText";
+import { MOBILE, TABLET } from "../../constants/mediaQuery";
 
 export const Container = styled(ThemedBox)`
   border-radius: 1rem;
@@ -12,6 +13,15 @@ export const Container = styled(ThemedBox)`
   grid-column: 8 / 18;
   grid-row: 1 / 6;
   padding: 2rem;
+
+  @media (max-width: ${TABLET}) {
+    grid-column: 8 / 19;
+  }
+
+  @media (max-width: ${MOBILE}) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
 `;
 export const StreakTitle = styled.p`
   font-size: 1.8rem;

@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import useSignUp from "../../hooks/auth/useSignUp";
 import * as S from "./style";
+import { EMAIL_REGEX, PASSWORD_REGEX } from "../../constants/regex";
 
 const Signup = () => {
   const { ...signup } = useSignUp();
   const [valid, setValid] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showPasswordCheck, setShowPasswordCheck] = useState<boolean>(false);
-
-  const emailRegex =
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-  const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
 
   const handleShowPassword = () => {
     setShowPassword((prev) => !prev);
@@ -23,8 +20,8 @@ const Signup = () => {
   useEffect(() => {
     setValid(
       signup.data.username.trim().length >= 3 &&
-        emailRegex.test(signup.data.email) &&
-        passwordRegex.test(signup.data.password) &&
+        EMAIL_REGEX.test(signup.data.email) &&
+        PASSWORD_REGEX.test(signup.data.password) &&
         signup.data.password === signup.passwordCheck
     );
   }, [signup.data, signup.passwordCheck]);
@@ -46,7 +43,7 @@ const Signup = () => {
           }}
         />
         <S.Warning>
-          {!emailRegex.test(signup.data.email) &&
+          {!EMAIL_REGEX.test(signup.data.email) &&
             signup.data.email.length > 0 &&
             "이메일 형식이 올바르지 않습니다."}
         </S.Warning>
@@ -84,7 +81,7 @@ const Signup = () => {
           />
         </S.PasswordWrap>
         <S.Warning>
-          {!passwordRegex.test(signup.data.password) &&
+          {!PASSWORD_REGEX.test(signup.data.password) &&
             signup.data.password.length > 0 &&
             "영문, 숫자, 특수문자 포함 8글자 이상 입력해주세요."}
         </S.Warning>

@@ -1,15 +1,27 @@
 import styled from "@emotion/styled";
 import ThemedContainer from "../../components/common/ThemedContainer";
 import ThemedBox from "../../components/common/ThemedBox";
+import { MOBILE, TABLET } from "../../constants/mediaQuery";
 
 export const Container = styled(ThemedContainer)`
   width: 100%;
   display: grid;
   box-sizing: border-box;
-  grid-template-columns: repeat(32, minmax(16px, 1fr));
-  grid-template-rows: repeat(20, minmax(16px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(32, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  gap: 1.5rem;
   padding: 2rem;
+
+  @media (max-width: ${TABLET}) {
+    grid-template-columns: repeat(18, 1fr);
+    grid-template-rows: repeat(23, 1fr);
+  }
+
+  @media (max-width: ${MOBILE}) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    padding: 1rem;
+  }
 `;
 
 export const BentoBox1 = styled(ThemedBox)`

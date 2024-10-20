@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import useGetProblems from "../../hooks/problem/useGetProblems";
 import * as S from './style';
-import ThemedText from "../../components/common/ThemedText";
 import { useTheme } from "../../contexts/theme";
 import { IoCaretDownOutline } from "react-icons/io5";
+import Skeleton from "../../components/Skeleton";
 
 const ProblemList = () => {
   const { data, ref } = useGetProblems();
@@ -52,16 +52,29 @@ const ProblemList = () => {
                 <S.Limits>{problem.memoryLimit}MB</S.Limits>
                 <S.Limits>{problem.correctRate}%</S.Limits>
                 <S.ProblemStateWrap>
-                  {problem.state === 'ACCEPTED' ? <S.Accepted>성공</S.Accepted> : problem.state === 'WRONG_ANSWER' && <S.Rejected>실패</S.Rejected>}
+                  {problem.state === "ACCEPTED" ? (
+                    <S.Accepted>성공</S.Accepted>
+                  ) : (
+                    problem.state === "WRONG_ANSWER" && (
+                      <S.Rejected>실패</S.Rejected>
+                    )
+                  )}
                 </S.ProblemStateWrap>
               </S.ProblemItem>
             ))}
           </S.ProblemWrap>
         ))
       ) : (
-        <ThemedText>문제를 불러오는 중입니다...</ThemedText>
+        <S.ProblemWrap>
+          {[0,1,2,3].map((_:any, idx) => (
+            <Skeleton width={1500} height={80} style={{width: '100%', borderRadius: 16}} key={idx}/>
+          ))}
+        </S.ProblemWrap>
       )}
-      <div ref={ref} style={{ height: "5rem", width: "100%", marginBottom: '5rem' }} />
+      <div
+        ref={ref}
+        style={{ height: "5rem", width: "100%", marginBottom: "5rem" }}
+      />
     </S.Container>
   );
 };

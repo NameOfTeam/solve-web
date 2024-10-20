@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import ThemedBox from "../common/ThemedBox";
 import ThemedText from "../common/ThemedText";
+import { MOBILE } from "../../constants/mediaQuery";
 
 export const Container = styled(ThemedBox)`
   border-radius: 1rem;
@@ -11,6 +12,11 @@ export const Container = styled(ThemedBox)`
   grid-column: 1 / 8;
   grid-row: 1 / 12;
   padding: 2rem;
+
+  @media (max-width: ${MOBILE}) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
 `;
 export const Avatar = styled.img`
   width: 7rem;

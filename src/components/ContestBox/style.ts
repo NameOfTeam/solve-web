@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import ThemedBox from "../common/ThemedBox";
 import ThemedText from "../common/ThemedText";
+import { MOBILE, TABLET } from "../../constants/mediaQuery";
 
 export const Container = styled(ThemedBox)`
   border-radius: 1rem;
@@ -11,6 +12,16 @@ export const Container = styled(ThemedBox)`
   grid-row: 1 / 12;
   padding: 2rem;
   gap: 2rem;
+
+  @media (max-width: ${TABLET}) {
+    grid-column: 1 / 19;
+    grid-row: 12 / 23;
+  }
+
+  @media (max-width: ${MOBILE}) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
 `;
 
 export const ContestBoxTtile = styled(ThemedText)`
@@ -36,7 +47,7 @@ export const ContestItem = styled.div<{ border: string }>`
 export const ContestTtile = styled(ThemedText)`
   font-size: 1.4rem;
   font-weight: 300;
-  width: 30%;
+  width: 50%;
   word-break: keep-all;
 `;
 
