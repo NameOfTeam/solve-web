@@ -15,6 +15,7 @@ export const Container = styled(ThemedContainer)`
   display: flex;
   align-items: center;
   flex-direction: row;
+  z-index: 9999;
 `;
 export const ToHome = styled(Link)`
   text-decoration: none;
@@ -51,6 +52,8 @@ export const MenuItemWrap = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  z-index: 99999;
   &:hover > .menu {
     display: flex;
   }

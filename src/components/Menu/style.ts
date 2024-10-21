@@ -15,9 +15,9 @@ export const Container = styled(ThemedContainer)<{ shadow: string }>`
   width: 50rem;
   height: 20rem;
   position: absolute;
-  z-index: 999;
+  z-index: 9999;
   top: 5rem;
-  left: 12rem;
+  left: 0;
   box-shadow: 0.0625rem 0.0625rem 0.625rem 0.0625rem ${(props) => props.shadow};
   display: none;
   transform: scale(0.9);

@@ -5,9 +5,6 @@ import ThemedText from "../../components/common/ThemedText";
 
 export const Container = styled(ThemedContainer)`
   min-height: calc(100vh - 5rem);
-  position: relative;
-  display: flex;
-  padding-bottom: 45rem;
 `;
 
 export const SectionTitleWrap = styled.div`
@@ -27,27 +24,23 @@ export const Banner = styled.img`
   object-fit: cover;
   object-position: center;
   z-index: 0;
-  position: absolute;
-  top: 0;
-  left: 0;
 `
 
 export const Main = styled.div`
   background-color: transparent;
   width: 100%;
   display: grid;
-  position: absolute;
-  top: 0;
-  padding: 12rem 6rem 4rem 6rem;
-  left: 0;
   z-index: 100;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(28, 1rem);
+  grid-template-columns: repeat(auto-fill, 1fr);
+  grid-template-rows: repeat(auto-fill, 1rem);
   gap: 2rem;
   box-sizing: border-box;
+  transform: translateY(-10rem);
+  padding: 4rem;
 `;
 
 export const UserInfoWrap = styled(ThemedBox)`
+  height: 20rem;
   grid-column: 1 / 11;
   grid-row: 1 / 10;
   border-radius: 1rem;
@@ -59,8 +52,8 @@ export const UserInfoWrap = styled(ThemedBox)`
 `;
 
 export const ProfileImageWrap = styled.img`
-  grid-column: 1 / 12;
-  grid-row: 1 / 12;
+  grid-column: 1 / 10;
+  grid-row: 1 / 10;
   width: 100%;
   border-radius: 500rem;
   object-fit: cover;
@@ -68,9 +61,9 @@ export const ProfileImageWrap = styled.img`
 `
 
 export const Username = styled(ThemedText)`
-  font-size: 3rem;
-  grid-column: 13 / -1;
-  grid-row: 1 / 6;
+  font-size: 2.4rem;
+  grid-column: 11 / -1;
+  grid-row: 2 / 5;
   display: flex;
   align-items: center;
 `
@@ -78,15 +71,15 @@ export const Username = styled(ThemedText)`
 export const Introduction = styled.pre<{color: string}>`
   font-size: 1.5rem;
   font-weight: 300;
-  grid-column: 13 / -1;
-  grid-row: 6 / 12;
+  grid-column: 11 / -1;
+  grid-row: 6 / 10;
   word-break: keep-all;
   color: ${props=>props.color};
 `;
 
 export const Log = styled(ThemedText)`
   grid-column: 1 / -1;
-  grid-row: 14 / 16;
+  grid-row: 12 / 14;
   font-size: 1.5rem;
   font-weight: 300;
   display: flex;
@@ -138,7 +131,7 @@ export const BadgeItem = styled.div`
 export const Link = styled.div`
   display: flex;
   grid-column: 1 / -1;
-  grid-row: 18 / 20;
+  grid-row: 15 / 17;
   gap: 0.5rem;
   align-items: center;
 `;
@@ -162,7 +155,7 @@ export const LinkIcon = styled.img`
 
 export const RankWrap = styled(ThemedBox)`
   grid-column: 1 / 17;
-  grid-row: 10 / 17;
+  grid-row: 10 / 20;
   border-radius: 1rem;
   padding: 2rem;
   box-sizing: border-box;
@@ -170,7 +163,7 @@ export const RankWrap = styled(ThemedBox)`
 
 export const StreakWrap = styled(ThemedBox)`
   grid-column: 1 / 17;
-  grid-row: 17 / 29;
+  grid-row: 20 / 35;
   border-radius: 1rem;
   padding: 2rem;
   box-sizing: border-box;
