@@ -10,6 +10,7 @@ const useUpdateMe = () => {
     username: user.username,
     newPassword: "",
     currentPassword: "",
+    introduction: ""
   });
   const [avatar, setAvatar] = useState<File | null>(null);
 
@@ -18,7 +19,7 @@ const useUpdateMe = () => {
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const updateMe = async () => {
+  const updateUsername = async () => {
     try {
       const res = await instance.patch("/users/me", {
         username: data.username,
@@ -42,6 +43,24 @@ const useUpdateMe = () => {
       });
     }
   };
+
+  const updateIntroduction = async () => {
+    try {
+      const res = await instance.patch("/users/me", {
+        introduction: data.introduction,
+      });
+      if (res) {
+        notification.success({
+          message: "정보 수정 성공",
+        });
+      }
+    } catch (err: any) {
+      notification.error({
+        message: "정보 수정 실패",
+        description: "네트워크 에러",
+      });
+    }
+  }
 
   const updatePassword = async () => {
     try {
@@ -85,7 +104,8 @@ const useUpdateMe = () => {
   return {
     data,
     handleForm,
-    updateMe,
+    updateIntroduction,
+    updateUsername,
     updatePassword,
     setAvatar,
     updateAvatar

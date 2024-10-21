@@ -9,6 +9,7 @@ export interface User {
   streak: number;
   solvedToday: boolean;
   rank: string;
+  introduction?: string;
 }
 
 // localhost:8080/avatars/{userId}.webp
