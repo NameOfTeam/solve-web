@@ -9,13 +9,13 @@ export const Container = styled(ThemedBox)`
   display: flex;
   flex-direction: column;
   grid-column: 18 / 33;
-  grid-row: 1 / 12;
+  grid-row: 1 / 13;
   padding: 2rem;
   gap: 2rem;
 
   @media (max-width: ${TABLET}) {
     grid-column: 1 / 19;
-    grid-row: 12 / 23;
+    grid-row: 13 / 23;
   }
 
   @media (max-width: ${MOBILE}) {

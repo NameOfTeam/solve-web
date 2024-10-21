@@ -5,6 +5,7 @@ import { MOBILE, TABLET } from "../../constants/mediaQuery";
 
 export const Container = styled(ThemedContainer)`
   display: grid;
+  min-height: calc(100vh - 5rem);
   box-sizing: border-box;
   grid-template-columns: repeat(32, 1fr);
   grid-template-rows: repeat(20, minmax(16px, 1fr));

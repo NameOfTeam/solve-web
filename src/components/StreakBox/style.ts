@@ -11,7 +11,7 @@ export const Container = styled(ThemedBox)`
   flex-direction: column;
   gap: 1rem;
   grid-column: 8 / 18;
-  grid-row: 1 / 6;
+  grid-row: 1 / 7;
   padding: 2rem;
 
   @media (max-width: ${TABLET}) {

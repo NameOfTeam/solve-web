@@ -14,7 +14,7 @@ export const FadeIn = keyframes`
 export const Container = styled(ThemedContainer)<{ shadow: string }>`
   width: 50rem;
   height: 20rem;
-  position: fixed;
+  position: absolute;
   z-index: 999;
   top: 5rem;
   left: 12rem;

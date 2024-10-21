@@ -41,7 +41,7 @@ const lightTheme: Theme = {
   backgroundColor: "#FFF",
   footerColor: "rgba(250,250,250)",
   oppositeColor: "#1b1b1b",
-  boxColor: "#EFEFEF",
+  boxColor: "#FAFAFA",
   borderColor: "#F1F1F1",
   boxBorderColor: "#CCC",
 };

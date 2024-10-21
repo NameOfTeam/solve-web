@@ -10,7 +10,7 @@ export const Container = styled(ThemedBox)`
   display: flex;
   flex-direction: column;
   grid-column: 8 / 18;
-  grid-row: 6 / 12;
+  grid-row: 7 / 13;
   padding: 2rem;
   gap: 0.5rem;
 

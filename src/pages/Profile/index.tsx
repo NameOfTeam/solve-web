@@ -49,6 +49,9 @@ const Profile = () => {
         <S.RankWrap>
           <S.SectionTitle>랭크</S.SectionTitle>
         </S.RankWrap>
+        <S.StreakWrap>
+          <S.SectionTitle>스트릭</S.SectionTitle>
+        </S.StreakWrap>
       </S.Main>
     </S.Container>
   );

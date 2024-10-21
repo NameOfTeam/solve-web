@@ -10,7 +10,7 @@ export const Container = styled(ThemedBox)`
   flex-direction: column;
   gap: 0.5rem;
   grid-column: 1 / 8;
-  grid-row: 1 / 12;
+  grid-row: 1 / 13;
   padding: 2rem;
 
   @media (max-width: ${MOBILE}) {

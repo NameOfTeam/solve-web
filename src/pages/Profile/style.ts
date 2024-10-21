@@ -7,7 +7,7 @@ export const Container = styled(ThemedContainer)`
   min-height: calc(100vh - 5rem);
   position: relative;
   display: flex;
-  padding-bottom: 20rem;
+  padding-bottom: 45rem;
 `;
 
 export const SectionTitleWrap = styled.div`
@@ -42,7 +42,7 @@ export const Main = styled.div`
   left: 0;
   z-index: 100;
   grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(24, 1rem);
+  grid-template-rows: repeat(28, 1rem);
   gap: 2rem;
   box-sizing: border-box;
 `;
@@ -54,8 +54,8 @@ export const UserInfoWrap = styled(ThemedBox)`
   padding: 2rem;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 1rem);
-  grid-template-rows: repeat(auto-fit, 1rem);
+  grid-template-columns: repeat(auto-fill, 1rem);
+  grid-template-rows: repeat(auto-fill, 1rem);
 `;
 
 export const ProfileImageWrap = styled.img`
@@ -168,3 +168,10 @@ export const RankWrap = styled(ThemedBox)`
   box-sizing: border-box;
 `
 
+export const StreakWrap = styled(ThemedBox)`
+  grid-column: 1 / 17;
+  grid-row: 17 / 29;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-sizing: border-box;
+`;
