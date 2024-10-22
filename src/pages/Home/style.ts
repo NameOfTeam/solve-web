@@ -8,13 +8,13 @@ export const Container = styled(ThemedContainer)`
   min-height: calc(100vh - 5rem);
   box-sizing: border-box;
   grid-template-columns: repeat(32, 1fr);
-  grid-template-rows: repeat(20, minmax(16px, 1fr));
+  grid-template-rows: repeat(auto-fit, 1rem);
   gap: 1.5rem;
   padding: 2rem;
 
   @media (max-width: ${TABLET}) {
     grid-template-columns: repeat(18, 1fr);
-    grid-template-rows: repeat(23, 1fr);
+    grid-template-rows: repeat(auto-fit, 1fr);
   }
 
   @media (max-width: ${MOBILE}) {

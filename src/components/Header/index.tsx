@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./style";
 import { useEffect, useState } from "react";
 import { primary, secondary, useTheme } from "../../contexts/theme";
@@ -16,6 +16,7 @@ const Header = () => {
   const { theme, setDarkTheme, setLightTheme, setPurpleTheme } = useTheme();
   const { loading } = useGetMe();
   const user = useUserStore((state) => state.user);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (location.pathname.includes("/problems")) {
@@ -74,6 +75,7 @@ const Header = () => {
             }}
             src={`${import.meta.env.VITE_API_URL}/avatars/${user.id}.webp`}
             style={loading && imageLoading ? { width: 0, height: 0 } : {}}
+            onClick={()=>{navigate('/profile')}}
           />
         </>
       ) : (

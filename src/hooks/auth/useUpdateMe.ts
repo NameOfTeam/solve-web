@@ -1,34 +1,98 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import instance from "../../libs/axios/customAxios";
 import { notification } from "antd";
 import { UpdateMeData } from "../../types/auth/update";
 import { useUserStore } from "../../stores/useUserStore";
 
 const useUpdateMe = () => {
-  const user = useUserStore((state) => state.user);
+  const setUser = useUserStore(state=>state.setUser);
   const [data, setData] = useState<UpdateMeData>({
-    username: user.username,
+    username: '',
     newPassword: "",
     currentPassword: "",
-    introduction: ""
+    introduction: "",
   });
   const [avatar, setAvatar] = useState<File | null>(null);
+  const [updateLoading, setUpdateLoading] = useState<boolean>(false);
 
   const handleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const init = () => {
+    setData({username: '', newPassword: '', currentPassword: '', introduction: ''});
+  }
+
   const updateUsername = async () => {
-    try {
-      const res = await instance.patch("/users/me", {
-        username: data.username,
+    const res = await instance.patch("/users/me", {
+      username: data.username,
+    });
+    if (res) {
+      notification.success({
+        message: "정보 수정 성공",
       });
+      return res;
+    }
+  };
+
+  const updateIntroduction = async () => {
+    const res = await instance.patch("/users/me", {
+      introduction: data.introduction,
+    });
+    if (res) {
+      notification.success({
+        message: "정보 수정 성공",
+      });
+      return res;
+    }
+  };
+
+  const updatePassword = async () => {
+    const res = await instance.patch("/users/me/password", {
+      newPassword: data.newPassword,
+      currentPassword: data.currentPassword,
+    });
+    if (res) {
+      notification.success({
+        message: "정보 수정 성공",
+      });
+      return res;
+    }
+  };
+
+  const updateAvatar = async () => {
+    const formData = new FormData();
+    if (avatar) {
+      formData.append("file", avatar);
+      const res = await instance.patch("/users/me/avatar", formData);
       if (res) {
         notification.success({
-          message: "정보 수정 성공",
+          message: "아바타 수정 성공",
         });
       }
+    }
+  };
+
+  useEffect(()=>{
+    updateAvatar();
+  },[avatar]);
+
+  const submit = async () => {
+    setUpdateLoading(true);
+    let res;
+    try {
+      if(data.username.length > 0) {
+        res = await updateUsername();
+      }
+      if(data.newPassword.length > 0) {
+        res = await updatePassword();
+      }
+      if(data.introduction.length > 0) {
+        res = await updateIntroduction();
+      }
+      setUser(res?.data.data);
+      init();
     } catch (err: any) {
       if (err.response && err.response.data.code === "USERNAME_DUPLICATED") {
         notification.error({
@@ -41,63 +105,8 @@ const useUpdateMe = () => {
         message: "정보 수정 실패",
         description: "네트워크 에러",
       });
-    }
-  };
-
-  const updateIntroduction = async () => {
-    try {
-      const res = await instance.patch("/users/me", {
-        introduction: data.introduction,
-      });
-      if (res) {
-        notification.success({
-          message: "정보 수정 성공",
-        });
-      }
-    } catch (err: any) {
-      notification.error({
-        message: "정보 수정 실패",
-        description: "네트워크 에러",
-      });
-    }
-  }
-
-  const updatePassword = async () => {
-    try {
-      const res = await instance.patch("/users/me/password", {
-        newPassword: data.newPassword,
-        currentPassword: data.currentPassword,
-      });
-      if (res) {
-        notification.success({
-          message: "정보 수정 성공",
-        });
-      }
-    } catch {
-      notification.error({
-        message: "정보 수정 실패",
-        description: "네트워크 에러",
-      });
-    }
-  };
-
-  const updateAvatar = async () => {
-    try {
-      const formData = new FormData();
-      if (avatar) {
-        formData.append("file", avatar);
-        const res = await instance.patch("/users/me/patch", formData);
-        if(res){
-          notification.success({
-            message: "아바타 수정 성공",
-          });
-        }
-      }
-    } catch {
-      notification.error({
-        message: "정보 수정 실패",
-        description: "네트워크 에러",
-      });
+    } finally {
+      setUpdateLoading(false);
     }
   };
 
@@ -108,7 +117,9 @@ const useUpdateMe = () => {
     updateUsername,
     updatePassword,
     setAvatar,
-    updateAvatar
+    updateAvatar,
+    submit,
+    updateLoading
   };
 };
 

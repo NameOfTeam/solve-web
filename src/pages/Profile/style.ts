@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import ThemedContainer from "../../components/common/ThemedContainer";
 import ThemedBox from "../../components/common/ThemedBox";
 import ThemedText from "../../components/common/ThemedText";
+import ThemedInput from "../../components/common/ThemedInput";
+import ThemedTextarea from "../../components/common/ThemedTextarea";
 
 export const Container = styled(ThemedContainer)`
   min-height: calc(100vh - 5rem);
@@ -31,7 +33,7 @@ export const Main = styled.div`
   width: 100%;
   display: grid;
   z-index: 100;
-  grid-template-columns: repeat(auto-fill, 1fr);
+  grid-template-columns: repeat(16, 1fr);
   grid-template-rows: repeat(auto-fill, 1rem);
   gap: 2rem;
   box-sizing: border-box;
@@ -51,13 +53,14 @@ export const UserInfoWrap = styled(ThemedBox)`
   grid-template-rows: repeat(auto-fill, 1rem);
 `;
 
-export const ProfileImageWrap = styled.img`
+export const ProfileImage = styled.div<{url: string}>`
   grid-column: 1 / 10;
   grid-row: 1 / 10;
   width: 100%;
   border-radius: 500rem;
-  object-fit: cover;
-  object-position: center;
+  cursor: pointer;
+  background: url(${props=>props.url}) center no-repeat;
+  background-size: cover;
 `
 
 export const Username = styled(ThemedText)`
@@ -154,16 +157,77 @@ export const LinkIcon = styled.img`
 `
 
 export const RankWrap = styled(ThemedBox)`
-  grid-column: 1 / 17;
-  grid-row: 10 / 20;
+  grid-column: 8 / 17;
+  grid-row: 10 / 21;
   border-radius: 1rem;
   padding: 2rem;
   box-sizing: border-box;
 `
 
+export const EditWrap = styled(ThemedBox)`
+  grid-column: 1 / 8;
+  grid-row: 10 / 32;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+`;
+export const Label = styled(ThemedText)`
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+`
+export const Input = styled(ThemedInput)`
+  font-size: 1.2rem;
+  padding: 0.7rem;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+`
+export const Textarea = styled(ThemedTextarea)`
+  font-size: 1.2rem;
+  padding: 0.7rem;
+  width: 100%;
+  word-break: keep-all;
+  height: 6rem;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+`
+export const EditButton = styled.button<{ background: string; darker: string }>`
+  font-size: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: ${(props) => props.background};
+  color: white;
+  border: none;
+  outline: none;
+  align-self: flex-end;
+  cursor: pointer;
+  margin-top: 2rem;
+  &:disabled {
+    background-color: ${(props) => props.darker};
+    color: #f1f1f1;
+  }
+`;
+
+export const AvatarFile = styled.input`
+  display: none;
+`
+
+export const SocialWrap = styled(ThemedBox)`
+  grid-column: 8 / 17;
+  grid-row: 21 / 32;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-sizing: border-box;
+`;
+
 export const StreakWrap = styled(ThemedBox)`
   grid-column: 1 / 17;
-  grid-row: 20 / 35;
+  grid-row: 32 / 50;
   border-radius: 1rem;
   padding: 2rem;
   box-sizing: border-box;

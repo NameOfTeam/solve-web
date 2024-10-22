@@ -35,6 +35,7 @@ export const Profile = styled.img`
   border-radius: 3rem;
   object-fit: cover;
   object-position: center;
+  cursor: pointer;
 `;
 
 export const MenuWrap = styled.div`

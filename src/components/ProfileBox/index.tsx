@@ -41,7 +41,7 @@ const ProfileBox = ({
             {loading && imageLoading ? (
               <Skeleton width={100} height={30} style={{ borderRadius: 8 }} />
             ) : (
-              <S.StatValue>{user.solvedProblem}</S.StatValue>
+              <S.StatValue>{user.solvedCount}</S.StatValue>
             )}
           </S.Stats>
           <S.Stats>

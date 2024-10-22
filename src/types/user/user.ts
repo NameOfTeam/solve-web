@@ -5,8 +5,9 @@ export interface User {
   username: string;
   money: number;
   participatedContest: number;
-  solvedProblem: number;
+  solvedCount: number;
   streak: number;
+  maxStreak: number;
   solvedToday: boolean;
   rank: string;
   introduction?: string;

@@ -8,7 +8,7 @@ const ThemedBox = ({ className, children, onClick }: ThemedComponent) => {
   return (
     <div
       className={className}
-      style={{ backgroundColor: theme.boxColor, transition: 'all 0.2s' }}
+      style={{ backgroundColor: theme.boxColor, transition: 'all 0.2s', border: `0.0625rem solid ${theme.boxBorderColor}` }}
       onClick={onClick}
     >
       {children}
