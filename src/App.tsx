@@ -1,18 +1,17 @@
-import { Theme, ThemeProvider } from "@emotion/react";
 import Router from "./components/Router";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ThemeProvider } from "./contexts/theme";
 
-const theme: Theme = {
-  colors: {
-    primary: "#9a55f3",
-  },
-};
+const queryClient = new QueryClient();
 
-function App() {
+const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Router />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider>
+        <Router />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
-}
+};
 
 export default App;

@@ -52,7 +52,6 @@ instance.interceptors.response.use(
     return response;
   },
   async (error: AxiosError) => {
-    console.log(error);
     const originalRequest = error.config as CustomAxiosRequestConfig;
 
     if (originalRequest.data instanceof FormData) {

@@ -1,18 +1,23 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "../Layout";
-import Main from "../Main";
-import NotFound from "../NotFound";
-import Login from "../Login";
-import Signup from "../SignUp";
+import RootLayout from "../../layouts/RootLayout";
+import Home from "../../pages/Home";
+import NotFound from "../../pages/NotFound";
+import Login from "../../pages/Login";
+import Signup from "../../pages/SignUp";
+import ProblemList from "../../pages/ProblemList";
+import Problem from "../../pages/Problem";
+import Verify from "../../pages/Verify";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Main />} />
+        <Route path="/" element={<RootLayout />}>
+          <Route index element={<Home />} />
+          <Route path="problems" element={<ProblemList />} />
         </Route>
-
+        <Route path="/verify" element={<Verify />}/>
+        <Route path="/problems/:problemId" element={<Problem />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NotFound />} />

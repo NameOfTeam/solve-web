@@ -5,10 +5,11 @@ import * as S from "./style";
 const Login = () => {
   const { ...login } = useLogin();
   const [valid, setVaild] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   useEffect(() => {
     if (
-      login.data.email.trim().length > 0 &&
+      login.data.username.trim().length > 0 &&
       login.data.password.trim().length > 0
     ) {
       setVaild(true);
@@ -17,32 +18,42 @@ const Login = () => {
     }
   }, [login.data]);
 
+  const handleShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+
   return (
     <S.Container>
       <S.LoginWrap>
-        <S.Title>SOLVE 로그인</S.Title>
-        <S.Seperater />
-        <S.Label>이메일</S.Label>
+        <S.Title>Welcome back! 🎉</S.Title>
+        <S.Label>아이디</S.Label>
         <S.Input
           type="text"
           onChange={login.handleForm}
-          name="email"
-          value={login.data.email}
+          name="username"
+          placeholder="아이디를 입력해주세요."
+          value={login.data.username}
           onKeyDown={(e) => {
             if (e.key === "Enter") login.submit();
           }}
         />
         <S.Label>비밀번호</S.Label>
-        <S.Input
-          type="password"
-          style={{ margin: 0 }}
-          onChange={login.handleForm}
-          name="password"
-          value={login.data.password}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") login.submit();
-          }}
-        />
+        <S.PasswordWrap>
+          <S.PasswordInput
+            type={showPassword ? "text" : "password"}
+            onChange={login.handleForm}
+            name="password"
+            placeholder="비밀번호를 입력해주세요."
+            value={login.data.password}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") login.submit();
+            }}
+          />
+          <S.ShowPassword
+            src={!showPassword ? "/assets/unshowPw.svg" : "/assets/showPw.svg"}
+            onClick={handleShowPassword}
+          />
+        </S.PasswordWrap>
         <S.AutoLoginWrap>
           <S.Check type="checkbox" onChange={login.handleAutoLogin} />
           <S.Label style={{ fontSize: 14, margin: 0 }}>자동로그인</S.Label>
